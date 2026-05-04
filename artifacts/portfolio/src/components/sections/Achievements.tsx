@@ -1,78 +1,8 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Trophy, Star, GraduationCap, FileText, Award } from "lucide-react";
+import { motion } from "framer-motion";
+import { Trophy, Star, Award, FileText, Users } from "lucide-react";
 import hackathonPhoto from "@assets/img_1777899583077.jpeg";
-
-function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {isInView ? (
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <motion.span
-            initial={{ from: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            {value}{suffix}
-          </motion.span>
-        </motion.span>
-      ) : (
-        <span>0{suffix}</span>
-      )}
-    </span>
-  );
-}
-
-function CountUp({ target, decimals = 0, suffix = "" }: { target: number; decimals?: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      <motion.span
-        initial={{ opacity: 1 }}
-        animate={isInView ? {} : {}}
-      >
-        {isInView ? (
-          <motion.span
-            initial={0}
-            animate={target}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          >
-            {({ latest }: { latest: number }) =>
-              latest.toFixed(decimals)
-            }
-          </motion.span>
-        ) : (
-          <span>0</span>
-        )}
-      </motion.span>
-      {suffix}
-    </span>
-  );
-}
-
-function CGPACounter() {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
-  return (
-    <span ref={ref}>
-      <motion.span
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.5 }}
-        className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-400"
-      >
-        9.71
-      </motion.span>
-    </span>
-  );
-}
+import prismaticPhoto from "@assets/Screenshot_2026-04-12_at_9.39.42_PM_1777900377667.png";
+import innothonPhoto from "@assets/Screenshot_2026-04-24_at_11.35.54_AM_1777900377673.png";
 
 const certifications = [
   { icon: Award, title: "IBM AI Certification", desc: "Artificial Intelligence — IBM" },
@@ -83,14 +13,35 @@ const certifications = [
 
 const research = [
   {
-    title: "RapidClaim — Patent In Progress",
-    desc: "AI-assisted claim processing using OCR and LLM pipelines. Research manuscript and patent filing in progress.",
-    tag: "Research Paper",
+    title: "RapidClaim — Research Paper & Patent In Progress",
+    desc: "Designing AI-assisted claim processing workflow using OCR and LLM pipelines. Research manuscript and patent filing currently in progress.",
+    tag: "Research + Patent",
   },
   {
     title: "Bhojantra — Patent In Progress",
     desc: "Patent filing in progress for multi-service platform architecture proposed in project work.",
     tag: "Patent",
+  },
+];
+
+const participations = [
+  {
+    title: "Prismatic 2K26",
+    subtitle: "Hackathon Participant",
+    desc: "Developed InfraScan — a phishing detection system using behavioral and metadata-based signals with anomaly-based threat identification.",
+    photo: prismaticPhoto,
+    date: "April 2026",
+    accentFrom: "from-cyan-500",
+    accentTo: "to-blue-500",
+  },
+  {
+    title: "INNOTHON '25 Final",
+    subtitle: "Hackathon Participant",
+    desc: "Reached the finals of INNOTHON '25, organized by KCG College of Technology — Department of Computer Science and Engineering, September 26–27, 2025.",
+    photo: innothonPhoto,
+    date: "September 2025",
+    accentFrom: "from-emerald-500",
+    accentTo: "to-teal-500",
   },
 ];
 
@@ -108,20 +59,20 @@ export function Achievements() {
           <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-3 block">Highlights</span>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Achievements</h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Recognition earned through competition, academics, and research.
+            Recognition earned through competition, research, and relentless building.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          {/* Hackathon win */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative bg-card border border-yellow-500/20 rounded-2xl overflow-hidden shadow-xl"
-          >
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 to-orange-400" />
+        {/* Main win */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative bg-card border border-yellow-500/20 rounded-2xl overflow-hidden shadow-xl mb-8"
+        >
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 to-orange-400" />
+          <div className="grid md:grid-cols-2 gap-0">
             <div className="p-8">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-400 flex items-center justify-center shadow-lg flex-shrink-0">
@@ -135,79 +86,91 @@ export function Achievements() {
                   <p className="text-muted-foreground text-sm">IIIT Dharwad — April 5, 2026</p>
                 </div>
               </div>
-              <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
-                Team "Core Logic" won First Prize of Rs. 50,000 for ClusterNodes — a graph-based distributed systems analysis platform using BFS, DFS and Dijkstra's algorithm.
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Team "Core Logic" won First Prize of <span className="text-yellow-300 font-semibold">Rs. 50,000</span> for ClusterNodes — a graph-based distributed systems analysis platform using BFS, DFS and Dijkstra's algorithm.
               </p>
-              <div className="relative rounded-xl overflow-hidden border border-yellow-500/20 shadow-lg">
-                <img
-                  src={hackathonPhoto}
-                  alt="Hack2Future 2.0 Winner — Team Core Logic"
-                  className="w-full h-52 object-cover object-center"
-                  data-testid="img-hackathon-win"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-3 left-4 right-4">
-                  <p className="text-white text-xs font-medium">Team Core Logic — Hack2Future 2.0, IIIT Dharwad</p>
-                </div>
+            </div>
+            <div className="relative overflow-hidden min-h-[220px]">
+              <img
+                src={hackathonPhoto}
+                alt="Hack2Future 2.0 Winner — Team Core Logic"
+                className="w-full h-full object-cover object-center"
+                data-testid="img-hackathon-win"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-card via-transparent to-transparent md:block hidden" />
+              <div className="absolute bottom-3 left-4">
+                <p className="text-white text-xs font-medium drop-shadow">Team Core Logic — Hack2Future 2.0</p>
               </div>
             </div>
-          </motion.div>
-
-          {/* CGPA */}
-          <div className="flex flex-col gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="relative bg-card border border-violet-500/20 rounded-2xl overflow-hidden shadow-xl p-8 flex-1"
-            >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 to-indigo-500" />
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                  <GraduationCap className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-violet-500/10 text-violet-300 border border-violet-500/20 mb-1">
-                    Academic Excellence
-                  </span>
-                  <h3 className="text-xl font-bold">SRM Institute of Science and Technology</h3>
-                  <p className="text-muted-foreground text-sm">B.Tech CSE — 3rd Semester, 2026</p>
-                </div>
-              </div>
-              <div className="mt-6 text-center">
-                <CGPACounter />
-                <p className="text-muted-foreground text-sm mt-1">CGPA out of 10</p>
-              </div>
-            </motion.div>
-
-            {/* Research */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="bg-card border border-border rounded-2xl p-6 space-y-4"
-            >
-              <h3 className="font-bold flex items-center gap-2 text-lg">
-                <FileText className="w-5 h-5 text-primary" />
-                Research & Innovations
-              </h3>
-              {research.map((r) => (
-                <div key={r.title} className="flex gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <div>
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary border border-primary/20 mb-1">
-                      {r.tag}
-                    </span>
-                    <p className="text-sm font-semibold">{r.title}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{r.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
           </div>
+        </motion.div>
+
+        {/* Hackathon participations */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {participations.map((p, i) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              className="bg-card border border-border rounded-2xl overflow-hidden shadow-lg hover:border-primary/30 transition-colors"
+            >
+              <div className={`h-0.5 bg-gradient-to-r ${p.accentFrom} ${p.accentTo}`} />
+              <div className="relative h-44 overflow-hidden">
+                <img
+                  src={p.photo}
+                  alt={p.title}
+                  className="w-full h-full object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/30 to-transparent" />
+                <div className="absolute bottom-3 left-4">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-card/80 backdrop-blur border border-border text-muted-foreground">
+                    <Users className="w-3 h-3" />
+                    Participant
+                  </span>
+                </div>
+              </div>
+              <div className="p-5">
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <h3 className="font-bold">{p.title}</h3>
+                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium bg-gradient-to-r ${p.accentFrom} ${p.accentTo} text-white flex-shrink-0`}>
+                    {p.date}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Research & Innovations */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-card border border-primary/20 rounded-2xl p-6 mb-8"
+        >
+          <h3 className="font-bold flex items-center gap-2 text-lg mb-5">
+            <FileText className="w-5 h-5 text-primary" />
+            Research & Innovations
+          </h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {research.map((r) => (
+              <div key={r.title} className="flex gap-3 bg-secondary/50 rounded-xl p-4 border border-border">
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                <div>
+                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary border border-primary/20 mb-1">
+                    {r.tag}
+                  </span>
+                  <p className="text-sm font-semibold">{r.title}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{r.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Certifications */}
         <motion.div
@@ -216,7 +179,7 @@ export function Achievements() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3 className="text-lg font-bold mb-4 text-muted-foreground uppercase tracking-widest text-sm">Certifications & Activities</h3>
+          <h3 className="text-sm font-bold mb-4 text-muted-foreground uppercase tracking-widest">Certifications & Activities</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {certifications.map((cert, i) => (
               <motion.div
