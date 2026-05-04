@@ -129,7 +129,7 @@ export function Skills() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <span className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-3 block">Toolkit</span>
+          <span className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-3 block">Skills</span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
             Built through<br />
             <span className="text-muted-foreground/50">real projects.</span>
