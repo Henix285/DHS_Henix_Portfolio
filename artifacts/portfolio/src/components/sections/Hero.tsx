@@ -199,13 +199,6 @@ export function Hero() {
                 className="w-full h-full object-cover object-top"
                 data-testid="img-profile"
               />
-              {/* Glass overlay at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background/60 to-transparent" />
-              <div className="absolute bottom-3 left-0 right-0 flex justify-center">
-                <span className="text-xs font-bold text-white/80 bg-black/30 backdrop-blur px-3 py-1 rounded-full border border-white/10">
-                  Henix — Hack2Future Winner
-                </span>
-              </div>
             </div>
           </div>
         </motion.div>
