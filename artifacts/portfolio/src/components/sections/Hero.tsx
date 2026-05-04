@@ -1,93 +1,226 @@
-import { motion } from "framer-motion";
-import profilePhoto from "@assets/Screenshot_2026-05-03_at_2.25.01_PM_1777899566281.png";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import profilePhoto from "@assets/RA2411003020229_DHS_1777902381606.jpg";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function Hero() {
-  return (
-    <section id="hero" className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/20 blur-[120px] rounded-full pointer-events-none opacity-50" />
-      
-      {/* Noise overlay */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
+const roles = [
+  "AI / ML Engineer",
+  "Full Stack Developer",
+  "Hackathon Winner",
+  "Research & Patent Author",
+  "Problem Solver",
+];
 
-      <div className="container px-4 mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+const stats = [
+  { value: "9.71", label: "CGPA", suffix: "" },
+  { value: "1st", label: "Hack2Future", suffix: "" },
+  { value: "2", label: "Patents Filed", suffix: "+" },
+  { value: "4", label: "Live Projects", suffix: "" },
+];
+
+const floatingTags = [
+  { label: "Python", x: "8%", y: "20%", delay: 0 },
+  { label: "NLP", x: "80%", y: "15%", delay: 0.4 },
+  { label: "Node.js", x: "85%", y: "75%", delay: 0.8 },
+  { label: "ML", x: "6%", y: "72%", delay: 1.2 },
+  { label: "Firebase", x: "50%", y: "88%", delay: 0.6 },
+  { label: "DSA", x: "72%", y: "48%", delay: 1.0 },
+];
+
+export function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setRoleIndex((i) => (i + 1) % roles.length);
+    }, 2200);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <section
+      id="hero"
+      className="relative min-h-[100dvh] flex items-center justify-center pt-20 overflow-hidden"
+    >
+      {/* Animated grid background */}
+      <div
+        className="absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      {/* Primary glow orb */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary/15 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+
+      {/* Floating tech tags */}
+      {floatingTags.map((tag) => (
+        <motion.div
+          key={tag.label}
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+          transition={{
+            opacity: { delay: tag.delay + 1, duration: 0.6 },
+            scale: { delay: tag.delay + 1, duration: 0.6 },
+            y: { delay: tag.delay + 1.5, duration: 3.5, repeat: Infinity, ease: "easeInOut" },
+          }}
+          className="absolute hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card/80 backdrop-blur border border-border/60 text-xs font-semibold text-muted-foreground shadow-lg"
+          style={{ left: tag.x, top: tag.y }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
+          {tag.label}
+        </motion.div>
+      ))}
+
+      <div className="container px-4 mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 max-w-6xl">
+        {/* Left — text */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="space-y-8"
         >
-          <div className="space-y-2">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              Available for new opportunities
-            </motion.div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight uppercase">
+          {/* Status badge */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+            </span>
+            Open to Internship Opportunities
+          </motion.div>
+
+          {/* Name */}
+          <div className="space-y-1">
+            <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tight uppercase">
               Hari Supriya<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400 font-black">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-violet-400 to-blue-400">
                 Daraboina
               </span>
             </h1>
+
+            {/* Cycling role */}
+            <div className="h-9 flex items-center mt-2">
+              <span className="text-muted-foreground text-lg font-medium mr-2">—</span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roleIndex}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35 }}
+                  className="text-lg md:text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400"
+                >
+                  {roles[roleIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
           </div>
 
-          <div className="space-y-4">
-            <h2 className="text-xl md:text-2xl font-medium text-foreground">
-              Hi, I'm Henix — a developer focused on building intelligent, real-world systems.
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
-              I work across AI, machine learning, and full stack development to create scalable, data-driven applications that solve meaningful problems.
-            </p>
-          </div>
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
+            Building intelligent, real-world systems across AI, machine learning, and full stack development — scalable, data-driven, and built to solve meaningful problems.
+          </p>
 
-          <div className="flex flex-wrap gap-4 pt-4">
-            <Button size="lg" className="h-12 px-8 text-base font-semibold rounded-full group" asChild>
+          {/* CTA buttons */}
+          <div className="flex flex-wrap gap-4">
+            <Button size="lg" className="h-12 px-8 text-base font-bold rounded-full group shadow-lg shadow-primary/20" asChild>
               <a href="#projects">
                 View My Work
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 text-base font-semibold rounded-full border-border hover:bg-secondary/50" asChild>
-              <a href="#contact">
-                Get In Touch
-              </a>
+            <Button size="lg" variant="outline" className="h-12 px-8 text-base font-semibold rounded-full border-border/60 hover:bg-secondary/50 hover:border-primary/40 transition-all" asChild>
+              <a href="#contact">Get In Touch</a>
             </Button>
           </div>
+
+          {/* Stats row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="flex flex-wrap gap-6 pt-2 border-t border-border/40"
+          >
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col">
+                <span className="text-2xl font-black text-foreground">
+                  {s.value}<span className="text-primary">{s.suffix}</span>
+                </span>
+                <span className="text-xs text-muted-foreground font-medium">{s.label}</span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
+        {/* Right — photo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="relative lg:ml-auto max-w-md w-full aspect-square"
+          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          className="relative lg:ml-auto flex items-center justify-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 to-transparent rounded-full blur-[60px] animate-pulse" />
-          <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-border/50 bg-card p-2 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
-            <img 
-              src={profilePhoto} 
-              alt="Hari Supriya Daraboina" 
-              className="w-full h-full object-cover rounded-[1.5rem]"
+          {/* Outer decorative ring */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="w-[340px] h-[340px] md:w-[420px] md:h-[420px] rounded-full border border-primary/10 border-dashed"
             />
-            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[1.5rem]" />
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="w-[290px] h-[290px] md:w-[360px] md:h-[360px] rounded-full border border-violet-500/10 border-dashed"
+            />
+          </div>
+
+          {/* Glow behind photo */}
+          <div className="absolute w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary/30 to-blue-500/20 blur-3xl" />
+
+          {/* Photo container */}
+          <div className="relative w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80">
+            {/* Corner accent */}
+            <div className="absolute -top-3 -right-3 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-blue-500 opacity-70 blur-md" />
+            <div className="absolute -bottom-3 -left-3 w-12 h-12 rounded-full bg-violet-500/60 blur-md" />
+
+            <div className="relative w-full h-full rounded-[2rem] overflow-hidden border-2 border-primary/30 shadow-2xl shadow-primary/20 bg-card">
+              <img
+                src={profilePhoto}
+                alt="Hari Supriya Daraboina"
+                className="w-full h-full object-cover object-top"
+                data-testid="img-profile"
+              />
+              {/* Glass overlay at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background/60 to-transparent" />
+              <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+                <span className="text-xs font-bold text-white/80 bg-black/30 backdrop-blur px-3 py-1 rounded-full border border-white/10">
+                  Henix — Hack2Future Winner
+                </span>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <a href="#what-i-do" className="text-muted-foreground hover:text-foreground transition-colors">
-          <ChevronDown className="w-8 h-8" />
+      {/* Scroll cue */}
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <a href="#what-i-do" className="text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+          <ChevronDown className="w-7 h-7" />
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }
