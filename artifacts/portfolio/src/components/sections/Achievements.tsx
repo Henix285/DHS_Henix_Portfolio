@@ -144,31 +144,62 @@ export function Achievements() {
           ))}
         </div>
 
-        {/* Research & Innovations */}
+        {/* RapidClaim — featured research card */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="relative bg-card border border-violet-500/30 rounded-2xl overflow-hidden shadow-xl mb-6"
+        >
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 via-indigo-400 to-blue-500" />
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-500/5 to-transparent pointer-events-none" />
+          <div className="p-8 relative">
+            <div className="flex flex-wrap items-start gap-4 mb-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <FileText className="w-6 h-6 text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap gap-2 mb-1">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-violet-500/10 text-violet-300 border border-violet-500/20">
+                    Research Paper
+                  </span>
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                    Patent In Progress
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold">RapidClaim</h3>
+                <p className="text-muted-foreground text-sm">AI-Assisted Insurance Claim Processing System</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Designing an AI-assisted claim processing workflow using <span className="text-foreground font-medium">OCR and LLM pipelines</span> to automate and accelerate insurance claim handling. Research manuscript and patent filing are both currently in progress.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Bhojantra patent */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-card border border-primary/20 rounded-2xl p-6 mb-8"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative bg-card border border-pink-500/20 rounded-2xl overflow-hidden shadow-lg mb-8"
         >
-          <h3 className="font-bold flex items-center gap-2 text-lg mb-5">
-            <FileText className="w-5 h-5 text-primary" />
-            Research & Innovations
-          </h3>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {research.map((r) => (
-              <div key={r.title} className="flex gap-3 bg-secondary/50 rounded-xl p-4 border border-border">
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                <div>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary border border-primary/20 mb-1">
-                    {r.tag}
-                  </span>
-                  <p className="text-sm font-semibold">{r.title}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{r.desc}</p>
-                </div>
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 to-rose-400" />
+          <div className="p-6 flex items-start gap-4">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-pink-500 to-rose-400 flex items-center justify-center shadow flex-shrink-0">
+              <FileText className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <div className="flex flex-wrap gap-2 mb-1">
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-pink-500/10 text-pink-300 border border-pink-500/20">
+                  Patent In Progress
+                </span>
               </div>
-            ))}
+              <h3 className="font-bold">Bhojantra</h3>
+              <p className="text-sm text-muted-foreground mt-1">Patent filing in progress for the multi-service platform architecture — a Node.js + Firebase system with secure transaction validation.</p>
+            </div>
           </div>
         </motion.div>
 
