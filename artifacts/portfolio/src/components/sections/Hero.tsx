@@ -211,15 +211,6 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent pointer-events-none" />
             </motion.div>
 
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2, type: "spring" }}
-              className="absolute -bottom-4 -right-4 bg-yellow-500 text-yellow-950 text-xs font-black px-3 py-1.5 rounded-full shadow-lg rotate-6"
-            >
-              Hack2Future Winner
-            </motion.div>
           </div>
         </motion.div>
       </div>
