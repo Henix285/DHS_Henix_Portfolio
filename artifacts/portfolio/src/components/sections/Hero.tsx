@@ -125,8 +125,11 @@ export function Hero() {
             </div>
           </div>
 
+          <p className="text-foreground/90 text-xl md:text-2xl font-semibold">
+            Hi, I'm Henix — a developer focused on building intelligent, real-world systems.
+          </p>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
-            Building intelligent, real-world systems across AI, machine learning, and full stack development — scalable, data-driven, and built to solve meaningful problems.
+            I work across AI, machine learning, and full stack development to create scalable, data-driven applications that solve meaningful problems.
           </p>
 
           {/* CTA buttons */}
