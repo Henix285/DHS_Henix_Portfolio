@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import profilePhoto from "@assets/RA2411003020229_DHS_1777902381606.jpg";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const roles = [
@@ -142,6 +142,12 @@ export function Hero() {
             </Button>
             <Button size="lg" variant="outline" className="h-12 px-8 text-base font-semibold rounded-full border-border/60 hover:bg-secondary/50 hover:border-primary/40 transition-all" asChild>
               <a href="#contact">Get In Touch</a>
+            </Button>
+            <Button size="lg" variant="outline" className="h-12 px-8 text-base font-semibold rounded-full gap-2 border-primary/40 hover:bg-primary/5 hover:border-primary/70 transition-all shadow-md" asChild>
+              <a href="/resume.pdf" download="Hari_Supriya_Daraboina_Resume.pdf">
+                <Download className="w-4 h-4" />
+                Resume
+              </a>
             </Button>
           </div>
 
