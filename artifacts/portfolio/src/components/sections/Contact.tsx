@@ -106,7 +106,7 @@ export function Contact() {
                 className="rounded-full gap-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5 font-semibold"
                 asChild
               >
-                <a href="https://drive.google.com/file/d/1example/view" target="_blank" rel="noopener noreferrer">
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-3.5 h-3.5" />
                   Read Online
                 </a>
@@ -116,7 +116,7 @@ export function Contact() {
                 className="rounded-full gap-2 bg-gradient-to-r from-primary to-blue-500 hover:opacity-90 font-semibold shadow-lg shadow-primary/20"
                 asChild
               >
-                <a href="https://drive.google.com/uc?export=download&id=1example" download>
+                <a href="/resume.pdf" download="Hari_Supriya_Daraboina_Resume.pdf">
                   <Download className="w-3.5 h-3.5" />
                   Download PDF
                 </a>
