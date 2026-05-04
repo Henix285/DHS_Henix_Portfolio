@@ -76,31 +76,52 @@ export function Contact() {
           </span>
         </motion.a>
 
-        {/* Download Resume banner */}
+        {/* Resume banner */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
-          className="mb-8 bg-card border border-border rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="mb-8 relative overflow-hidden bg-gradient-to-br from-primary/10 via-blue-500/5 to-violet-500/10 border border-primary/25 rounded-2xl p-6"
         >
-          <div>
-            <p className="font-bold">Download My Resume</p>
-            <p className="text-sm text-muted-foreground">Full overview of my skills, projects, and experience.</p>
-          </div>
-          <div className="flex gap-3 flex-shrink-0">
-            <Button variant="outline" size="sm" className="rounded-full gap-2 border-border" asChild>
-              <a href="https://drive.google.com/file/d/1example/view" target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="w-3.5 h-3.5" />
-                View
-              </a>
-            </Button>
-            <Button size="sm" className="rounded-full gap-2" asChild>
-              <a href="https://drive.google.com/uc?export=download&id=1example" download>
-                <Download className="w-3.5 h-3.5" />
-                Download
-              </a>
-            </Button>
+          {/* Decorative blobs */}
+          <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-primary/10 blur-2xl pointer-events-none" />
+          <div className="absolute -bottom-4 left-8 w-20 h-20 rounded-full bg-blue-500/10 blur-2xl pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-5">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                <Download className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <p className="font-bold text-base">My Resume</p>
+                <p className="text-sm text-muted-foreground">Skills · Projects · Experience — all in one place.</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3 flex-shrink-0">
+              <Button
+                variant="outline"
+                size="sm"
+                className="rounded-full gap-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5 font-semibold"
+                asChild
+              >
+                <a href="https://drive.google.com/file/d/1example/view" target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  Read Online
+                </a>
+              </Button>
+              <Button
+                size="sm"
+                className="rounded-full gap-2 bg-gradient-to-r from-primary to-blue-500 hover:opacity-90 font-semibold shadow-lg shadow-primary/20"
+                asChild
+              >
+                <a href="https://drive.google.com/uc?export=download&id=1example" download>
+                  <Download className="w-3.5 h-3.5" />
+                  Download PDF
+                </a>
+              </Button>
+            </div>
           </div>
         </motion.div>
 

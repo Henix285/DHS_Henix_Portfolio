@@ -106,14 +106,16 @@ export function WhatIDo() {
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">{service.description}</p>
 
-              <ul className="space-y-2.5">
+              <div className="flex flex-wrap gap-2">
                 {service.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                    <span className={`mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0 bg-gradient-to-r ${service.accentFrom} ${service.accentTo}`} />
+                  <span
+                    key={item}
+                    className={`inline-block text-xs font-medium px-3 py-1.5 rounded-full border bg-gradient-to-r ${service.accentFrom} ${service.accentTo} bg-clip-text text-transparent border-white/10 bg-white/5`}
+                  >
                     {item}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           ))}
         </div>
