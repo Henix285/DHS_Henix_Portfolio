@@ -162,7 +162,7 @@ export function Achievements() {
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap gap-2 mb-1">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-violet-500/10 text-violet-300 border border-violet-500/20">
-                    Research Paper
+                    Research Paper In Progress
                   </span>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
                     Patent In Progress
