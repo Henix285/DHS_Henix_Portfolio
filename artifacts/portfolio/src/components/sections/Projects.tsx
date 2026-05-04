@@ -1,9 +1,5 @@
 import { motion } from "framer-motion";
-import { Trophy, ExternalLink, Shield, MessageSquare, TrendingUp, Network } from "lucide-react";
-import clusterNodesVideo from "@assets/Screen_Recording_2026-04-02_at_2.01.36_AM_1777899605593.mov";
-import infraScanVideo from "@assets/Screen_Recording_2026-04-10_at_12.12.11_AM_1777899615911.mov";
-import textFlowVideo from "@assets/Screen_Recording_2025-12-31_at_8.03.59_PM_1777899622979.mov";
-import loanApprovalVideo from "@assets/Screen_Recording_2025-12-31_at_8.41.17_PM_1777899632044.mov";
+import { Trophy, Shield, MessageSquare, TrendingUp, Network } from "lucide-react";
 
 interface Project {
   title: string;
@@ -28,7 +24,7 @@ const projects: Project[] = [
     description: "Built a graph-based distributed systems analysis prototype using BFS, DFS and Dijkstra's algorithm. Visualized node interactions for infrastructure monitoring and anomaly insights.",
     tech: ["Python", "Graph Algorithms", "BFS/DFS", "Dijkstra", "Visualization"],
     context: "Winner — Hack2Future 2.0, IIIT Dharwad",
-    video: clusterNodesVideo,
+    video: "/videos/clusternodes.mov",
     icon: Network,
     accentFrom: "from-yellow-500",
     accentTo: "to-orange-400",
@@ -41,7 +37,7 @@ const projects: Project[] = [
     description: "Developed a phishing detection system using behavioral and metadata-based signals. Enabled risk scoring and anomaly-based threat identification for real-time security.",
     tech: ["Python", "Machine Learning", "Security", "Anomaly Detection"],
     context: "Developed at Prismatic 2K26",
-    video: infraScanVideo,
+    video: "/videos/infrascan.mov",
     icon: Shield,
     accentFrom: "from-cyan-500",
     accentTo: "to-blue-500",
@@ -52,7 +48,7 @@ const projects: Project[] = [
     description: "NLP-based text flow assistant built during ShadowFox Internship. Leverages natural language processing for smart text analysis and assistance.",
     tech: ["Python", "NLP", "Machine Learning", "Flask"],
     context: "ShadowFox Internship — December 2025",
-    video: textFlowVideo,
+    video: "/videos/textflow.mov",
     icon: MessageSquare,
     accentFrom: "from-violet-500",
     accentTo: "to-purple-500",
@@ -63,7 +59,7 @@ const projects: Project[] = [
     description: "Machine learning predictor for loan approval using financial data and feature engineering. Built functional prototype with model evaluation and real-world data patterns.",
     tech: ["Python", "Scikit-learn", "Pandas", "ML Modeling"],
     context: "ShadowFox Internship — December 2025",
-    video: loanApprovalVideo,
+    video: "/videos/loanapproval.mov",
     icon: TrendingUp,
     accentFrom: "from-emerald-500",
     accentTo: "to-teal-500",
@@ -105,14 +101,17 @@ export function Projects() {
               <div className="relative aspect-video bg-background/50 overflow-hidden">
                 {project.video && !project.noVideo ? (
                   <video
-                    src={project.video}
                     controls
                     muted
                     loop
                     playsInline
                     className="w-full h-full object-cover"
                     data-testid={`video-${project.title.toLowerCase().replace(/\s/g, "-")}`}
-                  />
+                  >
+                    <source src={project.video} type="video/quicktime" />
+                    <source src={project.video} type="video/mp4" />
+                    Your browser does not support this video.
+                  </video>
                 ) : (
                   <div className={`w-full h-full flex flex-col items-center justify-center bg-gradient-to-br ${project.accentFrom}/10 ${project.accentTo}/5`}>
                     <project.icon className="w-12 h-12 text-muted-foreground/40 mb-3" />
