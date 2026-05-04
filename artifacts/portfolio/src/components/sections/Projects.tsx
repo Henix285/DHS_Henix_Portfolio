@@ -68,18 +68,6 @@ const projects: Project[] = [
     accentFrom: "from-emerald-500",
     accentTo: "to-teal-500",
   },
-  {
-    title: "Bhojantra",
-    tagline: "Multi-service platform with secure transactions",
-    description: "Multi-service platform built with Node.js, Express and Firebase. Integrated secure transaction validation for service agreements. Patent filing in progress for the architecture.",
-    tech: ["Node.js", "Express.js", "Firebase", "REST APIs"],
-    context: "Patent In Progress",
-    icon: ExternalLink,
-    accentFrom: "from-pink-500",
-    accentTo: "to-rose-500",
-    noVideo: true,
-    noVideoLabel: "Patent In Progress",
-  },
 ];
 
 export function Projects() {
