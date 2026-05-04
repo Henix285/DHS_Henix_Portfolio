@@ -52,8 +52,8 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
-          <Button size="sm" variant="outline" className="ml-2 rounded-full border-border gap-1.5" asChild>
-            <a href="https://drive.google.com/file/d/1example/view" target="_blank" rel="noopener noreferrer">
+          <Button size="sm" className="ml-2 rounded-full gap-1.5 bg-gradient-to-r from-primary to-blue-500 hover:opacity-90 shadow-md shadow-primary/20 font-semibold" asChild>
+            <a href="/resume.pdf" download="Hari_Supriya_Daraboina_Resume.pdf">
               <Download className="w-3.5 h-3.5" />
               Resume
             </a>
@@ -88,6 +88,15 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <a
+                href="/resume.pdf"
+                download="Hari_Supriya_Daraboina_Resume.pdf"
+                className="flex items-center gap-2 text-sm font-semibold text-primary py-2"
+                onClick={() => setMenuOpen(false)}
+              >
+                <Download className="w-4 h-4" />
+                Download Resume
+              </a>
             </div>
           </motion.div>
         )}
