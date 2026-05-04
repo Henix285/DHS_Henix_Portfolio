@@ -7,10 +7,9 @@ const education = [
     degree: "B.Tech — Computer Science and Engineering",
     institution: "SRM Institute of Science and Technology",
     period: "2024 – 2028",
-    score: "9.71 CGPA",
-    scoreLabel: "3rd Semester, 2026",
-    accentFrom: "from-violet-500",
-    accentTo: "to-indigo-500",
+    score: "9.71",
+    unit: "CGPA",
+    gradient: "from-violet-500 to-indigo-500",
     featured: true,
   },
   {
@@ -18,10 +17,9 @@ const education = [
     degree: "Class XII — State Board",
     institution: "Sri Chaitanya Junior College",
     period: "Completed",
-    score: "87%",
-    scoreLabel: "Percentage",
-    accentFrom: "from-cyan-500",
-    accentTo: "to-blue-500",
+    score: "87",
+    unit: "%",
+    gradient: "from-cyan-500 to-blue-500",
     featured: false,
   },
   {
@@ -29,59 +27,67 @@ const education = [
     degree: "Class X — CBSE",
     institution: "Dr.K.K.R.Gowtham Secondary School",
     period: "Completed",
-    score: "84%",
-    scoreLabel: "Percentage",
-    accentFrom: "from-emerald-500",
-    accentTo: "to-teal-500",
+    score: "84",
+    unit: "%",
+    gradient: "from-emerald-500 to-teal-500",
     featured: false,
   },
 ];
 
 export function Education() {
   return (
-    <section id="education" className="py-24 relative bg-secondary/20">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <section id="education" className="py-28 relative overflow-hidden bg-secondary/10">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden>
+        <span className="text-[14vw] font-black text-foreground/[0.025] leading-none tracking-tighter uppercase">
+          EDUCATION
+        </span>
+      </div>
+
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-3 block">Background</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Education</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            A strong academic foundation powering real-world innovation.
-          </p>
+          <span className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-3 block">Background</span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
+            Academic roots<br />
+            <span className="text-muted-foreground/50">run deep.</span>
+          </h2>
         </motion.div>
 
-        <div className="space-y-6">
+        <div className="space-y-5">
           {education.map((edu, i) => (
             <motion.div
               key={edu.institution}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className={`relative bg-card border rounded-2xl overflow-hidden shadow-lg ${
-                edu.featured ? "border-violet-500/30" : "border-border"
-              }`}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+              className={`group relative bg-card border rounded-2xl overflow-hidden hover:shadow-lg transition-all ${edu.featured ? "border-violet-500/30" : "border-border hover:border-primary/20"}`}
             >
-              <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${edu.accentFrom} ${edu.accentTo}`} />
-              <div className="p-6 flex flex-col sm:flex-row sm:items-center gap-4">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${edu.accentFrom} ${edu.accentTo} flex items-center justify-center shadow-lg flex-shrink-0`}>
+              <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${edu.gradient}`} />
+
+              <div className="pl-8 pr-6 py-6 flex flex-col sm:flex-row sm:items-center gap-5">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${edu.gradient} flex items-center justify-center shadow-lg flex-shrink-0`}>
                   <edu.icon className="w-6 h-6 text-white" />
                 </div>
+
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-base">{edu.degree}</h3>
+                  <h3 className="font-black text-base leading-tight">{edu.degree}</h3>
                   <p className="text-muted-foreground text-sm">{edu.institution}</p>
-                  <p className="text-xs text-muted-foreground/60 mt-0.5">{edu.period}</p>
+                  <p className="text-xs text-muted-foreground/50 mt-0.5">{edu.period}</p>
                 </div>
-                <div className="text-right flex-shrink-0">
-                  <p className={`text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${edu.accentFrom} ${edu.accentTo}`}>
+
+                {/* Score */}
+                <div className="flex-shrink-0 text-right">
+                  <span className={`text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r ${edu.gradient}`}>
                     {edu.score}
-                  </p>
-                  <p className="text-xs text-muted-foreground">{edu.scoreLabel}</p>
+                  </span>
+                  <span className={`text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r ${edu.gradient}`}>
+                    {edu.unit}
+                  </span>
                 </div>
               </div>
             </motion.div>

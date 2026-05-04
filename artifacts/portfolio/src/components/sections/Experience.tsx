@@ -1,102 +1,125 @@
 import { motion } from "framer-motion";
-import { Briefcase, Calendar } from "lucide-react";
+import { Calendar, MapPin, ArrowRight } from "lucide-react";
 
 const experiences = [
   {
-    role: "Machine Learning Intern (Virtual)",
+    num: "02",
+    role: "Machine Learning Intern",
+    type: "Virtual Internship",
     company: "ShadowFox",
     period: "December 2025",
+    location: "Remote",
     highlights: [
       "Developed TextFlow Assist — an NLP-powered text assistance tool",
       "Built Loan Approval Predictor using ML concepts and financial data modeling",
-      "Created functional prototypes with hands-on exposure to model development and evaluation",
+      "Created functional prototypes with hands-on exposure to model development",
     ],
-    accentFrom: "from-violet-500",
-    accentTo: "to-indigo-500",
+    gradient: "from-violet-500 to-indigo-500",
     tag: "NLP & ML",
   },
   {
-    role: "ML Engineer Intern (Virtual)",
+    num: "01",
+    role: "ML Engineer Intern",
+    type: "Virtual Internship",
     company: "UPLYX Solutions",
     period: "June – July 2025",
+    location: "Remote",
     highlights: [
       "Built a music recommender system using data-driven recommendation techniques",
-      "Applied ML concepts for personalized song suggestions at scale",
+      "Applied ML for personalized song suggestions at scale",
       "Designed recommendation pipelines based on user behavior and content signals",
     ],
-    accentFrom: "from-cyan-500",
-    accentTo: "to-blue-500",
+    gradient: "from-cyan-500 to-blue-500",
     tag: "Recommendation Systems",
   },
 ];
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 relative bg-secondary/20">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <section id="experience" className="py-28 relative overflow-hidden bg-secondary/10">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden>
+        <span className="text-[16vw] font-black text-foreground/[0.025] leading-none tracking-tighter uppercase">
+          WORK
+        </span>
+      </div>
+
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-3 block">Work</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Experience</h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Hands-on industry exposure through meaningful internships in AI and ML.
-          </p>
+          <span className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-3 block">Experience</span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
+            Industry exposure<br />
+            <span className="text-muted-foreground/50">that matters.</span>
+          </h2>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/20 to-transparent" />
+        <div className="space-y-6">
+          {experiences.map((exp, i) => (
+            <motion.div
+              key={exp.company}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 hover:shadow-lg transition-all"
+            >
+              <div className={`absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b ${exp.gradient}`} />
 
-          <div className="space-y-10">
-            {experiences.map((exp, i) => (
-              <motion.div
-                key={exp.company}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="relative pl-16"
-              >
-                {/* Timeline dot */}
-                <div className={`absolute left-0 top-1 w-12 h-12 rounded-xl bg-gradient-to-br ${exp.accentFrom} ${exp.accentTo} flex items-center justify-center shadow-lg`}>
-                  <Briefcase className="w-5 h-5 text-white" />
-                </div>
-
-                <div className="bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors">
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div className="pl-8 pr-6 py-7">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-5">
+                  <div className="flex items-start gap-4">
+                    {/* Big number */}
+                    <span className={`text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b ${exp.gradient} opacity-20 group-hover:opacity-40 transition-opacity leading-none hidden sm:block mt-1`}>
+                      {exp.num}
+                    </span>
                     <div>
-                      <h3 className="text-lg font-bold">{exp.role}</h3>
-                      <p className={`text-sm font-semibold bg-clip-text text-transparent bg-gradient-to-r ${exp.accentFrom} ${exp.accentTo}`}>
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full bg-gradient-to-r ${exp.gradient} text-white`}>
+                          {exp.tag}
+                        </span>
+                        <span className="text-xs text-muted-foreground border border-border rounded-full px-2.5 py-0.5">
+                          {exp.type}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-black">{exp.role}</h3>
+                      <p className={`text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r ${exp.gradient}`}>
                         {exp.company}
                       </p>
                     </div>
-                    <div className="flex flex-col items-end gap-2">
-                      <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground bg-secondary px-3 py-1 rounded-full border border-border">
-                        <Calendar className="w-3 h-3" />
-                        {exp.period}
-                      </span>
-                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium bg-gradient-to-r ${exp.accentFrom} ${exp.accentTo} text-white`}>
-                        {exp.tag}
-                      </span>
-                    </div>
                   </div>
-                  <ul className="space-y-2">
-                    {exp.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                        <span className={`mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0 bg-gradient-to-r ${exp.accentFrom} ${exp.accentTo}`} />
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
+
+                  <div className="flex flex-col gap-1.5 text-xs text-muted-foreground flex-shrink-0">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {exp.period}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {exp.location}
+                    </span>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+
+                <ul className="space-y-2.5">
+                  {exp.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-2.5 text-sm text-muted-foreground group-hover:text-muted-foreground/80">
+                      <ArrowRight className={`w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-transparent`}
+                        style={{ color: `var(--tw-gradient-from, currentColor)` }}
+                      />
+                      <span className="flex items-start gap-2">
+                        <span className={`mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0 bg-gradient-to-r ${exp.gradient}`} />
+                        {h}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -188,18 +188,35 @@ export function Hero() {
 
           {/* Photo container */}
           <div className="relative w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80">
-            {/* Corner accent */}
-            <div className="absolute -top-3 -right-3 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-blue-500 opacity-70 blur-md" />
-            <div className="absolute -bottom-3 -left-3 w-12 h-12 rounded-full bg-violet-500/60 blur-md" />
+            {/* Corner accent blobs */}
+            <div className="absolute -top-4 -right-4 w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-500 opacity-60 blur-xl" />
+            <div className="absolute -bottom-4 -left-4 w-14 h-14 rounded-full bg-violet-500/50 blur-xl" />
 
-            <div className="relative w-full h-full rounded-[2rem] overflow-hidden border-2 border-primary/30 shadow-2xl shadow-primary/20 bg-card">
+            {/* Tilted frame — rotates slightly, flattens on hover */}
+            <motion.div
+              whileHover={{ rotate: 0, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="relative w-full h-full rounded-[2rem] overflow-hidden border-2 border-primary/40 shadow-2xl shadow-primary/25 bg-card rotate-3"
+            >
               <img
                 src={profilePhoto}
                 alt="Hari Supriya Daraboina"
                 className="w-full h-full object-cover object-top"
                 data-testid="img-profile"
               />
-            </div>
+              {/* Subtle gradient sheen */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent pointer-events-none" />
+            </motion.div>
+
+            {/* Floating badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.2, type: "spring" }}
+              className="absolute -bottom-4 -right-4 bg-yellow-500 text-yellow-950 text-xs font-black px-3 py-1.5 rounded-full shadow-lg rotate-6"
+            >
+              Hack2Future Winner
+            </motion.div>
           </div>
         </motion.div>
       </div>
