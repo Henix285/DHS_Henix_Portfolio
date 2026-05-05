@@ -105,7 +105,7 @@ export function Projects() {
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full ${project.title === "ClusterNodes" ? "object-contain bg-black" : "object-cover"}`}
                     data-testid={`video-${project.title.toLowerCase().replace(/\s/g, "-")}`}
                   >
                     <source src={project.video} type="video/mp4" />
