@@ -30,7 +30,9 @@ export function Footer() {
             <Linkedin className="w-5 h-5" />
           </a>
           <a
-            href="mailto:daraboinaharisupriya@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&to=daraboinaharisupriya@gmail.com&su=Hello%20Henix%20%E2%80%94%20Let%27s%20Connect&body=Hi%20Hari%20Supriya%2C%0A%0A"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"
             data-testid="link-email-footer"
           >
