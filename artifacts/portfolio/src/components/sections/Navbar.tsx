@@ -37,7 +37,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <a href="#hero" className="font-black text-2xl tracking-tight">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
-            Henix
+            HENIX
           </span>
         </a>
 
