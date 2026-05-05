@@ -24,7 +24,7 @@ const projects: Project[] = [
     description: "Built a graph-based distributed systems analysis prototype using BFS, DFS and Dijkstra's algorithm. Visualized node interactions for infrastructure monitoring and anomaly insights.",
     tech: ["Python", "Graph Algorithms", "BFS/DFS", "Dijkstra", "Visualization"],
     context: "Winner — Hack2Future 2.0, IIIT Dharwad",
-    video: "/videos/clusternodes.mov",
+    video: "/videos/clusternodes.mp4",
     icon: Network,
     accentFrom: "from-yellow-500",
     accentTo: "to-orange-400",
@@ -37,7 +37,7 @@ const projects: Project[] = [
     description: "Developed a phishing detection system using behavioral and metadata-based signals. Enabled risk scoring and anomaly-based threat identification for real-time security.",
     tech: ["Python", "Machine Learning", "Security", "Anomaly Detection"],
     context: "Developed at Prismatic 2K26",
-    video: "/videos/infrascan.mov",
+    video: "/videos/infrascan.mp4",
     icon: Shield,
     accentFrom: "from-cyan-500",
     accentTo: "to-blue-500",
@@ -48,7 +48,7 @@ const projects: Project[] = [
     description: "NLP-based text flow assistant built during ShadowFox Internship. Leverages natural language processing for smart text analysis and assistance.",
     tech: ["Python", "NLP", "Machine Learning", "Flask"],
     context: "ShadowFox Internship — December 2025",
-    video: "/videos/textflow.mov",
+    video: "/videos/textflow.mp4",
     icon: MessageSquare,
     accentFrom: "from-violet-500",
     accentTo: "to-purple-500",
@@ -59,7 +59,7 @@ const projects: Project[] = [
     description: "Machine learning predictor for loan approval using financial data and feature engineering. Built functional prototype with model evaluation and real-world data patterns.",
     tech: ["Python", "Scikit-learn", "Pandas", "ML Modeling"],
     context: "ShadowFox Internship — December 2025",
-    video: "/videos/loanapproval.mov",
+    video: "/videos/loanapproval.mp4",
     icon: TrendingUp,
     accentFrom: "from-emerald-500",
     accentTo: "to-teal-500",
@@ -108,7 +108,6 @@ export function Projects() {
                     className="w-full h-full object-cover"
                     data-testid={`video-${project.title.toLowerCase().replace(/\s/g, "-")}`}
                   >
-                    <source src={project.video} type="video/quicktime" />
                     <source src={project.video} type="video/mp4" />
                     Your browser does not support this video.
                   </video>
