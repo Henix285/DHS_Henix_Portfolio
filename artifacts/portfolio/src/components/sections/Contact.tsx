@@ -89,15 +89,16 @@ export function Contact() {
             <Button
               size="lg"
               className="rounded-full gap-2 bg-gradient-to-r from-primary to-blue-500 hover:opacity-90 font-semibold shadow-lg shadow-primary/20 w-full sm:w-auto"
-              onClick={() =>
-                window.open(
-                  `mailto:${EMAIL}?subject=Hello%20Henix%20%E2%80%94%20Let%27s%20Connect&body=Hi%20Hari%20Supriya%2C%0A%0A`,
-                  "_blank"
-                )
-              }
+              asChild
             >
-              <Mail className="w-4 h-4" />
-              Open Email App
+              <a
+                href={`https://mail.google.com/mail/?view=cm&to=${EMAIL}&su=Hello%20Henix%20%E2%80%94%20Let%27s%20Connect&body=Hi%20Hari%20Supriya%2C%0A%0A`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Mail className="w-4 h-4" />
+                Send via Gmail
+              </a>
             </Button>
             <Button
               size="lg"
