@@ -11,21 +11,27 @@ const contactLinks = [
     label: "Phone",
     value: "+91 93915 40096",
     href: "tel:+919391540096",
-    accent: "from-cyan-500 to-blue-500",
+    gradient: "from-cyan-500 to-blue-500",
+    glow: "rgba(6,182,212,0.25)",
+    borderColor: "rgba(6,182,212,0.3)",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     value: "linkedin.com/in/hari-supriya-daraboina",
     href: "https://www.linkedin.com/in/hari-supriya-daraboina-799618327/",
-    accent: "from-blue-500 to-sky-400",
+    gradient: "from-blue-500 to-sky-400",
+    glow: "rgba(59,130,246,0.25)",
+    borderColor: "rgba(59,130,246,0.3)",
   },
   {
     icon: Github,
     label: "GitHub",
     value: "github.com/Henix285",
     href: "https://github.com/Henix285",
-    accent: "from-gray-500 to-gray-400",
+    gradient: "from-gray-400 to-gray-500",
+    glow: "rgba(156,163,175,0.2)",
+    borderColor: "rgba(156,163,175,0.25)",
   },
 ];
 
@@ -52,17 +58,24 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-primary/5 -skew-y-3 origin-bottom-left -z-10" />
-      <div className="container px-4 mx-auto max-w-4xl">
+    <section id="contact" className="py-28 relative overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.08) 0%, transparent 60%)" }} />
+
+      <div className="container px-4 mx-auto max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-3 block">Say Hello</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400">
+            Say Hello
+          </span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4">
+            Get In Touch
+          </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
             Ready to build something together? Reach out directly — I respond to every message.
           </p>
@@ -74,50 +87,72 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mb-8 bg-gradient-to-r from-primary/20 to-blue-500/10 border border-primary/30 rounded-2xl p-8 text-center shadow-lg"
+          className="mb-6 relative rounded-2xl overflow-hidden text-center p-8"
+          style={{
+            background: "linear-gradient(135deg, rgba(139,92,246,0.12), rgba(6,182,212,0.06))",
+            border: "1px solid rgba(139,92,246,0.35)",
+            boxShadow: "0 0 60px rgba(139,92,246,0.2), 0 8px 30px rgba(0,0,0,0.4)",
+            backdropFilter: "blur(20px)",
+          }}
           data-testid="link-email-cta"
         >
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center mx-auto mb-4 shadow-lg">
-            <Mail className="w-8 h-8 text-white" />
-          </div>
-          <p className="text-sm text-muted-foreground mb-1 font-medium uppercase tracking-widest">Email Me</p>
-          <p className="text-xl md:text-2xl font-bold text-foreground mb-5 break-all">
-            {EMAIL}
-          </p>
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-violet-500 via-pink-500 to-cyan-500" />
+          <div className="absolute inset-0 pointer-events-none"
+            style={{ background: "radial-gradient(circle at 50% -20%, rgba(139,92,246,0.15) 0%, transparent 60%)" }} />
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Button
-              size="lg"
-              className="rounded-full gap-2 bg-gradient-to-r from-primary to-blue-500 hover:opacity-90 font-semibold shadow-lg shadow-primary/20 w-full sm:w-auto"
-              asChild
-            >
-              <a
-                href={`https://mail.google.com/mail/?view=cm&to=${EMAIL}&su=Hello%20Henix%20%E2%80%94%20Let%27s%20Connect&body=Hi%20Hari%20Supriya%2C%0A%0A`}
-                target="_blank"
-                rel="noopener noreferrer"
+          <div className="relative z-10">
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl"
+              style={{ background: "linear-gradient(135deg, #7c3aed, #06b6d4)", boxShadow: "0 0 30px rgba(139,92,246,0.5)" }}>
+              <Mail className="w-8 h-8 text-white" />
+            </div>
+            <p className="text-xs text-muted-foreground mb-1 font-bold uppercase tracking-widest">Email Me</p>
+            <p className="text-xl md:text-2xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-pink-300 to-cyan-300 break-all">
+              {EMAIL}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Button
+                size="lg"
+                className="rounded-full gap-2 font-bold w-full sm:w-auto border-0 text-white"
+                style={{
+                  background: "linear-gradient(135deg, #7c3aed, #2563eb)",
+                  boxShadow: "0 0 25px rgba(124,58,237,0.4)",
+                }}
+                asChild
               >
-                <Mail className="w-4 h-4" />
-                Send via Gmail
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={handleCopy}
-              className="rounded-full gap-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5 font-semibold w-full sm:w-auto transition-all"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <span className="text-emerald-400">Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4" />
-                  Copy Email
-                </>
-              )}
-            </Button>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&to=${EMAIL}&su=Hello%20Henix%20%E2%80%94%20Let%27s%20Connect&body=Hi%20Hari%20Supriya%2C%0A%0A`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Mail className="w-4 h-4" />
+                  Send via Gmail
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={handleCopy}
+                className="rounded-full gap-2 font-bold w-full sm:w-auto transition-all"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(139,92,246,0.3)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-400" />
+                    <span className="text-emerald-400">Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4" />
+                    Copy Email
+                  </>
+                )}
+              </Button>
+            </div>
           </div>
         </motion.div>
 
@@ -127,18 +162,21 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
-          className="mb-8 relative overflow-hidden bg-gradient-to-br from-primary/10 via-blue-500/5 to-violet-500/10 border border-primary/25 rounded-2xl p-6"
+          className="mb-6 relative rounded-2xl overflow-hidden p-6"
+          style={{
+            background: "rgba(255,255,255,0.025)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            backdropFilter: "blur(20px)",
+          }}
         >
-          <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-primary/10 blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-4 left-8 w-20 h-20 rounded-full bg-blue-500/10 blur-2xl pointer-events-none" />
-
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-5">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center shadow-lg flex-shrink-0">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
+                style={{ background: "linear-gradient(135deg, #7c3aed, #2563eb)", boxShadow: "0 0 20px rgba(124,58,237,0.35)" }}>
                 <Download className="w-5 h-5 text-white" />
               </div>
               <div>
-                <p className="font-bold text-base">My Resume</p>
+                <p className="font-black text-base">My Resume</p>
                 <p className="text-sm text-muted-foreground">Skills · Projects · Experience — all in one place.</p>
               </div>
             </div>
@@ -147,7 +185,8 @@ export function Contact() {
               <Button
                 variant="outline"
                 size="sm"
-                className="rounded-full gap-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5 font-semibold"
+                className="rounded-full gap-2 font-semibold"
+                style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
                 asChild
               >
                 <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
@@ -157,7 +196,8 @@ export function Contact() {
               </Button>
               <Button
                 size="sm"
-                className="rounded-full gap-2 bg-gradient-to-r from-primary to-blue-500 hover:opacity-90 font-semibold shadow-lg shadow-primary/20"
+                className="rounded-full gap-2 font-bold border-0 text-white"
+                style={{ background: "linear-gradient(135deg, #7c3aed, #2563eb)", boxShadow: "0 0 15px rgba(124,58,237,0.35)" }}
                 asChild
               >
                 <a href="/resume.pdf" download="Hari_Supriya_Daraboina_Resume.pdf">
@@ -181,16 +221,23 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 + i * 0.08 }}
-              whileHover={{ y: -3 }}
-              className="flex items-center gap-4 bg-card border border-border rounded-xl p-4 hover:border-primary/40 transition-all group"
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              className="flex items-center gap-4 rounded-xl p-4 transition-all group"
+              style={{
+                background: "rgba(255,255,255,0.025)",
+                border: `1px solid ${link.borderColor}`,
+                boxShadow: `0 0 20px ${link.glow}, 0 4px 15px rgba(0,0,0,0.3)`,
+                backdropFilter: "blur(16px)",
+              }}
               data-testid={`link-contact-${link.label.toLowerCase()}`}
             >
-              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.accent} flex items-center justify-center flex-shrink-0 shadow`}>
+              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${link.gradient} flex items-center justify-center flex-shrink-0 shadow`}
+                style={{ boxShadow: `0 0 15px ${link.glow}` }}>
                 <link.icon className="w-5 h-5 text-white" />
               </div>
               <div className="min-w-0">
                 <p className="text-xs text-muted-foreground font-medium">{link.label}</p>
-                <p className="text-sm font-semibold truncate group-hover:text-primary transition-colors">{link.value}</p>
+                <p className="text-sm font-bold truncate text-foreground/80 group-hover:text-foreground transition-colors">{link.value}</p>
               </div>
             </motion.a>
           ))}
