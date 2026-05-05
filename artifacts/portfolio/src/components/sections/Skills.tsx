@@ -92,6 +92,8 @@ const skillCategories: SkillCategory[] = [
 export function Skills() {
   return (
     <section id="skills" className="py-28 relative overflow-hidden">
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[45vw] h-[45vw] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(16,185,129,0.07) 0%, transparent 70%)", filter: "blur(60px)" }} />
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

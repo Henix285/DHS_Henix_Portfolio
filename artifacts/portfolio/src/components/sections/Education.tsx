@@ -43,6 +43,8 @@ const education = [
 export function Education() {
   return (
     <section id="education" className="py-28 relative overflow-hidden">
+      <div className="absolute bottom-0 right-1/4 w-[40vw] h-[40vw] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden>
         <span className="text-[12vw] font-black leading-none tracking-tighter uppercase"
           style={{ color: "rgba(255,255,255,0.02)" }}>

@@ -37,6 +37,8 @@ const participations = [
 export function Achievements() {
   return (
     <section id="achievements" className="py-28 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[40vw] h-[40vw] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%)", filter: "blur(60px)" }} />
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

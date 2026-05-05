@@ -79,6 +79,8 @@ const projects: Project[] = [
 export function Projects() {
   return (
     <section id="projects" className="py-28 relative overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-[50vw] h-[50vw] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%)", filter: "blur(60px)" }} />
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
