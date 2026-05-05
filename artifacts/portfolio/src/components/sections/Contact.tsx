@@ -21,14 +21,14 @@ const contactLinks = [
     icon: Linkedin,
     label: "LinkedIn",
     value: "linkedin.com/in/hari-supriya-daraboina",
-    href: "https://www.linkedin.com/in/hari-supriya-daraboina",
+    href: "https://www.linkedin.com/in/hari-supriya-daraboina-799618327/",
     accent: "from-blue-500 to-sky-400",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "github.com/HariSupriyaDaraboina",
-    href: "https://github.com/HariSupriyaDaraboina",
+    value: "github.com/Henix285",
+    href: "https://github.com/Henix285",
     accent: "from-gray-500 to-gray-400",
   },
 ];
