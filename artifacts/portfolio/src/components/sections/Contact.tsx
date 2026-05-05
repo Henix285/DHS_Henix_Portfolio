@@ -1,15 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone, Download, ExternalLink, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, Download, ExternalLink, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const EMAIL = "daraboinaharisupriya@gmail.com";
+
 const contactLinks = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "daraboinaharisupriya@gmail.com",
-    href: "mailto:daraboinaharisupriya@gmail.com",
-    accent: "from-violet-500 to-indigo-500",
-  },
   {
     icon: Phone,
     label: "Phone",
@@ -34,6 +30,27 @@ const contactLinks = [
 ];
 
 export function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      const el = document.createElement("textarea");
+      el.value = EMAIL;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-primary/5 -skew-y-3 origin-bottom-left -z-10" />
@@ -52,29 +69,53 @@ export function Contact() {
         </motion.div>
 
         {/* Primary email CTA */}
-        <motion.a
-          href="mailto:daraboinaharisupriya@gmail.com"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="block mb-8 bg-gradient-to-r from-primary/20 to-blue-500/10 border border-primary/30 rounded-2xl p-8 text-center group hover:border-primary/60 transition-all shadow-lg hover:shadow-primary/10"
+          className="mb-8 bg-gradient-to-r from-primary/20 to-blue-500/10 border border-primary/30 rounded-2xl p-8 text-center shadow-lg"
           data-testid="link-email-cta"
         >
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center mx-auto mb-4 shadow-lg">
             <Mail className="w-8 h-8 text-white" />
           </div>
           <p className="text-sm text-muted-foreground mb-1 font-medium uppercase tracking-widest">Email Me</p>
-          <p className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors mb-3">
-            daraboinaharisupriya@gmail.com
+          <p className="text-xl md:text-2xl font-bold text-foreground mb-5 break-all">
+            {EMAIL}
           </p>
-          <span className="inline-flex items-center gap-2 text-sm text-primary font-semibold">
-            Open Email Client
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </span>
-        </motion.a>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button
+              size="lg"
+              className="rounded-full gap-2 bg-gradient-to-r from-primary to-blue-500 hover:opacity-90 font-semibold shadow-lg shadow-primary/20 w-full sm:w-auto"
+              asChild
+            >
+              <a href={`mailto:${EMAIL}`}>
+                <Mail className="w-4 h-4" />
+                Open Email App
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={handleCopy}
+              className="rounded-full gap-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5 font-semibold w-full sm:w-auto transition-all"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-4 h-4 text-emerald-400" />
+                  <span className="text-emerald-400">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4" />
+                  Copy Email
+                </>
+              )}
+            </Button>
+          </div>
+        </motion.div>
 
         {/* Resume banner */}
         <motion.div
@@ -84,7 +125,6 @@ export function Contact() {
           transition={{ delay: 0.15 }}
           className="mb-8 relative overflow-hidden bg-gradient-to-br from-primary/10 via-blue-500/5 to-violet-500/10 border border-primary/25 rounded-2xl p-6"
         >
-          {/* Decorative blobs */}
           <div className="absolute -top-6 -right-6 w-28 h-28 rounded-full bg-primary/10 blur-2xl pointer-events-none" />
           <div className="absolute -bottom-4 left-8 w-20 h-20 rounded-full bg-blue-500/10 blur-2xl pointer-events-none" />
 
@@ -126,7 +166,7 @@ export function Contact() {
         </motion.div>
 
         {/* Other contact links */}
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-3 gap-4">
           {contactLinks.map((link, i) => (
             <motion.a
               key={link.label}
@@ -137,7 +177,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 + i * 0.08 }}
-              whileHover={{ x: 4 }}
+              whileHover={{ y: -3 }}
               className="flex items-center gap-4 bg-card border border-border rounded-xl p-4 hover:border-primary/40 transition-all group"
               data-testid={`link-contact-${link.label.toLowerCase()}`}
             >
@@ -148,7 +188,6 @@ export function Contact() {
                 <p className="text-xs text-muted-foreground font-medium">{link.label}</p>
                 <p className="text-sm font-semibold truncate group-hover:text-primary transition-colors">{link.value}</p>
               </div>
-              <ExternalLink className="w-4 h-4 text-muted-foreground/40 group-hover:text-primary/60 ml-auto flex-shrink-0 transition-colors" />
             </motion.a>
           ))}
         </div>
