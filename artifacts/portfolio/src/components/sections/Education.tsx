@@ -4,11 +4,14 @@ import { GraduationCap, BookOpen, Award } from "lucide-react";
 const education = [
   {
     icon: GraduationCap,
-    degree: "B.Tech — Computer Science & Engineering",
+    degree: "B.Tech — Computer Science and Engineering",
     institution: "SRM Institute of Science and Technology",
     period: "2024 – 2028",
     score: "9.71",
     unit: "CGPA",
+    gradient: "from-violet-500 to-fuchsia-500",
+    glow: "rgba(139,92,246,0.25)",
+    borderColor: "rgba(139,92,246,0.4)",
     featured: true,
   },
   {
@@ -18,6 +21,9 @@ const education = [
     period: "Completed",
     score: "87",
     unit: "%",
+    gradient: "from-cyan-500 to-blue-500",
+    glow: "rgba(6,182,212,0.2)",
+    borderColor: "rgba(6,182,212,0.3)",
     featured: false,
   },
   {
@@ -27,64 +33,84 @@ const education = [
     period: "Completed",
     score: "84",
     unit: "%",
+    gradient: "from-emerald-500 to-teal-500",
+    glow: "rgba(16,185,129,0.2)",
+    borderColor: "rgba(16,185,129,0.3)",
     featured: false,
   },
 ];
 
 export function Education() {
   return (
-    <section id="education" className="py-28 relative">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="education" className="py-28 relative overflow-hidden">
+      <div className="absolute bottom-0 right-1/4 w-[40vw] h-[40vw] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden>
+        <span className="text-[12vw] font-black leading-none tracking-tighter uppercase"
+          style={{ color: "rgba(255,255,255,0.02)" }}>
+          EDUCATION
+        </span>
+      </div>
+
+      <div className="container mx-auto px-4 max-w-5xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mb-16"
         >
-          <span className="text-xs font-mono font-medium tracking-[0.25em] uppercase text-violet-400 mb-4 block">
-            Education
+          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+            Background
           </span>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white">
-            Academic foundation.
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
+            Academic roots<br />
+            <span className="text-muted-foreground/40">run deep.</span>
           </h2>
         </motion.div>
 
-        <div className="space-y-3">
+        <div className="space-y-5">
           {education.map((edu, i) => (
             <motion.div
               key={edu.institution}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group flex flex-col sm:flex-row sm:items-center gap-5 p-6 rounded-2xl card-glass relative overflow-hidden"
-              style={edu.featured ? { borderColor: "rgba(124,58,237,0.2)" } : {}}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+              whileHover={{ x: 4, transition: { duration: 0.2 } }}
+              className="group relative rounded-2xl overflow-hidden"
+              style={{
+                background: edu.featured ? "rgba(139,92,246,0.05)" : "rgba(255,255,255,0.02)",
+                border: `1px solid ${edu.borderColor}`,
+                boxShadow: `0 0 ${edu.featured ? "40px" : "20px"} ${edu.glow}, 0 4px 20px rgba(0,0,0,0.3)`,
+                backdropFilter: "blur(20px)",
+              }}
             >
-              {/* Hover accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity"
-                style={{ background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.5), transparent)" }} />
+              <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${edu.gradient}`} />
+              {/* Hover glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{ background: `radial-gradient(circle at 0% 50%, ${edu.glow} 0%, transparent 50%)` }} />
 
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{
-                  background: edu.featured ? "rgba(124,58,237,0.12)" : "rgba(255,255,255,0.04)",
-                  border: edu.featured ? "1px solid rgba(124,58,237,0.25)" : "1px solid rgba(255,255,255,0.07)",
-                }}>
-                <edu.icon className={`w-5 h-5 ${edu.featured ? "text-violet-400" : "text-white/30"}`} />
-              </div>
+              <div className="pl-8 pr-6 py-6 flex flex-col sm:flex-row sm:items-center gap-5 relative">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${edu.gradient} flex items-center justify-center shadow-lg flex-shrink-0`}
+                  style={{ boxShadow: `0 0 20px ${edu.glow}` }}>
+                  <edu.icon className="w-6 h-6 text-white" />
+                </div>
 
-              <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-white text-sm">{edu.degree}</h3>
-                <p className="text-sm text-white/40 mt-0.5">{edu.institution}</p>
-                <p className="text-xs text-white/20 mt-0.5 font-mono">{edu.period}</p>
-              </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-black text-base leading-tight">{edu.degree}</h3>
+                  <p className="text-muted-foreground text-sm mt-0.5">{edu.institution}</p>
+                  <p className="text-xs text-muted-foreground/40 mt-0.5">{edu.period}</p>
+                </div>
 
-              <div className="flex-shrink-0">
-                <span className={`text-3xl font-black ${edu.featured ? "text-violet-400" : "text-white/40"}`}>
-                  {edu.score}
-                </span>
-                <span className={`text-base font-bold ${edu.featured ? "text-violet-400/70" : "text-white/25"}`}>
-                  {edu.unit}
-                </span>
+                <div className="flex-shrink-0 text-right">
+                  <span className={`text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r ${edu.gradient}`}
+                    style={{ filter: `drop-shadow(0 0 10px ${edu.glow})` }}>
+                    {edu.score}
+                  </span>
+                  <span className={`text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r ${edu.gradient}`}>
+                    {edu.unit}
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}

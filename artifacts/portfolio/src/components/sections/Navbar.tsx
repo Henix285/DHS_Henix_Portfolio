@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const links = [
-  { label: "What I Build", href: "#what-i-do" },
+  { label: "What I Do", href: "#what-i-do" },
   { label: "Achievements", href: "#achievements" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
-  { label: "Stack", href: "#skills" },
+  { label: "Skills", href: "#skills" },
   { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
@@ -17,66 +18,62 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <motion.nav
-      initial={{ y: -60, opacity: 0 }}
+      initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.7 }}
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={scrolled ? {
-        background: "rgba(9,9,18,0.85)",
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        background: "rgba(8,8,20,0.8)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid rgba(139,92,246,0.15)",
+        boxShadow: "0 4px 30px rgba(0,0,0,0.4), 0 0 60px rgba(139,92,246,0.05)",
       } : {}}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between h-16 max-w-6xl">
-        <a href="#hero" className="font-black text-lg tracking-tight text-white">
-          Henix<span className="text-violet-400">.</span>
+      <div className="container mx-auto px-4 flex items-center justify-between h-16">
+        <a href="#hero" className="font-bold text-xl tracking-tight">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400">
+            Henix
+          </span>
         </a>
 
-        <div className="hidden lg:flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-6">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-white/45 hover:text-white/90 transition-colors font-medium relative group"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium relative group"
               data-testid={`nav-link-${link.label.toLowerCase().replace(/\s/g, "-")}`}
             >
               {link.label}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-violet-400 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-violet-400 to-cyan-400 group-hover:w-full transition-all duration-300" />
             </a>
           ))}
-          <a
-            href="/resume.pdf"
-            download="Hari_Supriya_Daraboina_Resume.pdf"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all"
+          <Button
+            size="sm"
+            className="ml-2 rounded-full gap-1.5 font-bold border-0 text-white"
             style={{
-              background: "rgba(124,58,237,0.1)",
-              border: "1px solid rgba(124,58,237,0.3)",
-              color: "#a78bfa",
+              background: "linear-gradient(135deg, #7c3aed, #2563eb)",
+              boxShadow: "0 0 20px rgba(124,58,237,0.35)",
             }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.2)";
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.5)";
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.1)";
-              (e.currentTarget as HTMLElement).style.borderColor = "rgba(124,58,237,0.3)";
-            }}
+            asChild
           >
-            <Download className="w-3 h-3" />
-            Resume
-          </a>
+            <a href="/resume.pdf" download="Hari_Supriya_Daraboina_Resume.pdf">
+              <Download className="w-3.5 h-3.5" />
+              Resume
+            </a>
+          </Button>
         </div>
 
         <button
-          className="lg:hidden p-2 text-white/40 hover:text-white transition-colors"
+          className="lg:hidden p-2 text-muted-foreground hover:text-foreground"
           onClick={() => setMenuOpen(!menuOpen)}
           data-testid="button-mobile-menu"
         >
@@ -90,14 +87,18 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            style={{ background: "rgba(9,9,18,0.95)", backdropFilter: "blur(24px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+            style={{
+              background: "rgba(8,8,20,0.95)",
+              backdropFilter: "blur(20px)",
+              borderBottom: "1px solid rgba(139,92,246,0.2)",
+            }}
           >
-            <div className="container mx-auto px-6 py-4 flex flex-col gap-1">
-              {links.map(link => (
+            <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
+              {links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-white/50 hover:text-white py-2.5 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 border-b border-white/5 last:border-0"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -106,10 +107,10 @@ export function Navbar() {
               <a
                 href="/resume.pdf"
                 download="Hari_Supriya_Daraboina_Resume.pdf"
-                className="flex items-center gap-2 text-sm font-semibold text-violet-400 py-2.5"
+                className="flex items-center gap-2 text-sm font-bold py-2 text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400"
                 onClick={() => setMenuOpen(false)}
               >
-                <Download className="w-4 h-4" />
+                <Download className="w-4 h-4 text-violet-400" />
                 Download Resume
               </a>
             </div>
