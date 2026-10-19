@@ -35,10 +35,10 @@ const skillCategories: SkillCategory[] = [
   {
     label: "AI / Machine Learning",
     icon: Brain,
-    gradient: "from-violet-500 to-fuchsia-500",
-    glow: "rgba(139,92,246,0.25)",
-    borderColor: "rgba(139,92,246,0.35)",
-    tagClass: "bg-violet-500/15 text-violet-300 border border-violet-500/30 hover:bg-violet-500/25",
+    gradient: "from-slate-500 to-indigo-500",
+    glow: "rgba(115,126,158,0.13)",
+    borderColor: "rgba(132,142,172,0.22)",
+    tagClass: "bg-indigo-500/10 text-indigo-200 border border-indigo-400/20 hover:bg-indigo-500/15",
     skills: [
       { name: "Machine Learning" },
       { name: "NLP" },
@@ -108,9 +108,14 @@ export function Skills() {
           <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4">
             Skills
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            A curated stack built through real projects and competitions.
-          </p>
+            <div className="max-w-3xl mx-auto space-y-2 text-muted-foreground leading-relaxed">
+              <p>
+                Continuously exploring emerging technologies across AI/ML, full-stack development, cloud computing, DevOps, and software engineering.
+              </p>
+              <p className="text-sm">
+                I enjoy learning new tools, experimenting with modern tech stacks, and building practical projects—especially as I continue learning AI/ML—to create innovative, scalable, and impactful solutions.
+              </p>
+            </div>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

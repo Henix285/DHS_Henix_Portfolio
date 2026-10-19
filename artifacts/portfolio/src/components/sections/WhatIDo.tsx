@@ -6,16 +6,16 @@ const services = [
     icon: Brain,
     title: "AI / Machine Learning",
     badge: "Strongest Differentiator",
-    gradient: "from-violet-500 via-purple-500 to-fuchsia-500",
-    glow: "rgba(139,92,246,0.3)",
-    borderColor: "rgba(139,92,246,0.4)",
+    gradient: "from-slate-500 via-indigo-500 to-blue-500",
+    glow: "rgba(115,126,158,0.14)",
+    borderColor: "rgba(132,142,172,0.22)",
     items: [
       "NLP & Natural Language Processing",
       "Recommendation Systems",
       "Data-driven predictive models",
       "Research & Patent-level innovation",
     ],
-    itemColors: ["bg-violet-500/20 text-violet-300 border-violet-500/30", "bg-purple-500/20 text-purple-300 border-purple-500/30", "bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/30", "bg-violet-500/20 text-violet-300 border-violet-500/30"],
+    itemColors: ["bg-indigo-500/10 text-indigo-200 border-indigo-400/20", "bg-blue-500/10 text-blue-200 border-blue-400/20", "bg-slate-500/10 text-slate-200 border-slate-400/20", "bg-indigo-500/10 text-indigo-200 border-indigo-400/20"],
     description: "Building intelligent systems that understand and learn from data — from NLP pipelines to custom ML models deployed in real-world applications.",
   },
   {
@@ -57,7 +57,7 @@ export function WhatIDo() {
     <section id="what-i-do" className="py-28 relative overflow-hidden">
       {/* Section accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)", filter: "blur(40px)" }} />
+        style={{ background: "radial-gradient(circle, rgba(139,116,169,0.025) 0%, transparent 70%)", filter: "blur(40px)" }} />
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ export function WhatIDo() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">
+          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-slate-300 to-cyan-300">
             What I Do
           </span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">

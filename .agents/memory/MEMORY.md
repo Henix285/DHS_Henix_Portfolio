@@ -1,0 +1,1 @@
+- [Temporary Python tools](temporary-python-tools.md) — installing a one-off PDF tool can scaffold uv files and change `.replit`; restore the original workspace setup afterward.

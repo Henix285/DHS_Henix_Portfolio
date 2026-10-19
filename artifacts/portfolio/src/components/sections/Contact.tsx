@@ -61,7 +61,7 @@ export function Contact() {
     <section id="contact" className="py-28 relative overflow-hidden">
       {/* Background accent */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.08) 0%, transparent 60%)" }} />
+        style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(139,116,169,0.025) 0%, transparent 60%)" }} />
 
       <div className="container px-4 mx-auto max-w-4xl relative z-10">
         <motion.div
@@ -70,7 +70,7 @@ export function Contact() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-pink-400">
+          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-slate-300 to-cyan-300">
             Say Hello
           </span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4">
@@ -89,24 +89,24 @@ export function Contact() {
           transition={{ delay: 0.1 }}
           className="mb-6 relative rounded-2xl overflow-hidden text-center p-8"
           style={{
-            background: "linear-gradient(135deg, rgba(139,92,246,0.12), rgba(6,182,212,0.06))",
-            border: "1px solid rgba(139,92,246,0.35)",
-            boxShadow: "0 0 60px rgba(139,92,246,0.2), 0 8px 30px rgba(0,0,0,0.4)",
+            background: "linear-gradient(135deg, rgba(40,118,109,0.1), rgba(255,255,255,0.025))",
+            border: "1px solid rgba(120,162,154,0.22)",
+            boxShadow: "0 8px 30px rgba(0,0,0,0.24)",
             backdropFilter: "blur(20px)",
           }}
           data-testid="link-email-cta"
         >
-          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-violet-500 via-pink-500 to-cyan-500" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
           <div className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(circle at 50% -20%, rgba(139,92,246,0.15) 0%, transparent 60%)" }} />
+            style={{ background: "radial-gradient(circle at 50% -20%, rgba(40,118,109,0.06) 0%, transparent 60%)" }} />
 
           <div className="relative z-10">
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl"
-              style={{ background: "linear-gradient(135deg, #7c3aed, #06b6d4)", boxShadow: "0 0 30px rgba(139,92,246,0.5)" }}>
+              style={{ background: "linear-gradient(135deg, #28766d, #356b82)", boxShadow: "0 5px 18px rgba(32,105,99,0.18)" }}>
               <Mail className="w-8 h-8 text-white" />
             </div>
             <p className="text-xs text-muted-foreground mb-1 font-bold uppercase tracking-widest">Email Me</p>
-            <p className="text-xl md:text-2xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-pink-300 to-cyan-300 break-all">
+            <p className="text-xl md:text-2xl font-black mb-6 text-foreground/90 break-all">
               {EMAIL}
             </p>
 
@@ -115,8 +115,8 @@ export function Contact() {
                 size="lg"
                 className="rounded-full gap-2 font-bold w-full sm:w-auto border-0 text-white"
                 style={{
-                  background: "linear-gradient(135deg, #7c3aed, #2563eb)",
-                  boxShadow: "0 0 25px rgba(124,58,237,0.4)",
+                  background: "linear-gradient(135deg, #28766d, #356b82)",
+                  boxShadow: "0 4px 14px rgba(32,105,99,0.18)",
                 }}
                 asChild
               >
@@ -136,7 +136,7 @@ export function Contact() {
                 className="rounded-full gap-2 font-bold w-full sm:w-auto transition-all"
                 style={{
                   background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(139,92,246,0.3)",
+                  border: "1px solid rgba(255,255,255,0.14)",
                   backdropFilter: "blur(10px)",
                 }}
               >
@@ -172,7 +172,7 @@ export function Contact() {
           <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-5">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0"
-                style={{ background: "linear-gradient(135deg, #7c3aed, #2563eb)", boxShadow: "0 0 20px rgba(124,58,237,0.35)" }}>
+                style={{ background: "linear-gradient(135deg, #28766d, #356b82)", boxShadow: "0 4px 14px rgba(32,105,99,0.18)" }}>
                 <Download className="w-5 h-5 text-white" />
               </div>
               <div>
@@ -197,7 +197,7 @@ export function Contact() {
               <Button
                 size="sm"
                 className="rounded-full gap-2 font-bold border-0 text-white"
-                style={{ background: "linear-gradient(135deg, #7c3aed, #2563eb)", boxShadow: "0 0 15px rgba(124,58,237,0.35)" }}
+                style={{ background: "linear-gradient(135deg, #28766d, #356b82)", boxShadow: "0 4px 14px rgba(32,105,99,0.18)" }}
                 asChild
               >
                 <a href="/resume.pdf" download="Hari_Supriya_Daraboina_Resume.pdf">

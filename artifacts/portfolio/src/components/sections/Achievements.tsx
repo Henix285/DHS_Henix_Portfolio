@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Trophy, Star, Award, FileText, Users } from "lucide-react";
 import hackathonPhoto from "@assets/img_1777899583077.jpeg";
+import bestPaperGroupPhoto from "@assets/Screenshot_2026-10-19_at_9.00.38_AM_1792380653180.png";
 import prismaticPhoto from "@assets/Screenshot_2026-04-12_at_9.39.42_PM_1777900377667.png";
 import innothonPhoto from "@assets/Screenshot_2026-04-24_at_11.35.54_AM_1777900377673.png";
 
@@ -23,9 +24,9 @@ const participations = [
     borderColor: "rgba(6,182,212,0.3)",
   },
   {
-    title: "INNOTHON '25 Final",
-    subtitle: "Hackathon Finalist",
-    desc: "Reached the finals of INNOTHON '25, organized by KCG College of Technology — Department of Computer Science and Engineering, September 26–27, 2025.",
+    title: "INNOTHON '25",
+    subtitle: "Hackathon Participant",
+    desc: "Participated in INNOTHON '25, organized by KCG College of Technology — Department of Computer Science and Engineering, September 26–27, 2025.",
     photo: innothonPhoto,
     date: "September 2025",
     gradient: "from-emerald-500 to-teal-500",
@@ -114,6 +115,76 @@ export function Achievements() {
           </div>
         </motion.div>
 
+        {/* AISES 2026 Best Paper Award */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65, delay: 0.08 }}
+          className="relative rounded-2xl overflow-hidden mb-8"
+          style={{
+            background: "rgba(255,255,255,0.025)",
+            border: "1px solid rgba(207,174,112,0.28)",
+            boxShadow: "0 8px 28px rgba(0,0,0,0.22)",
+          }}
+        >
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-amber-700/50 via-amber-300/70 to-amber-700/50" />
+          <div className="relative grid md:grid-cols-[1.15fr_0.85fr] gap-6 p-6 md:p-8 items-stretch">
+            <div className="flex items-start gap-4 min-w-0">
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: "rgba(185,143,70,0.16)", color: "#e4c98e" }}
+              >
+                <Award className="w-6 h-6" />
+              </div>
+              <div className="min-w-0">
+                <span
+                  className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold mb-3"
+                  style={{
+                    background: "rgba(185,143,70,0.12)",
+                    border: "1px solid rgba(207,174,112,0.25)",
+                    color: "#e4c98e",
+                  }}
+                >
+                  Best Paper Award · AISES 2026
+                </span>
+                <h3 className="text-lg md:text-xl font-bold leading-snug">
+                  AI-Driven IoT Framework for Predictive Maintenance and Anomaly Detection in Renewable Energy Microgrids
+                </h3>
+                <p className="text-sm text-muted-foreground mt-2">
+                  September 25–26, 2026 · CHRIST University, Bangalore
+                </p>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground leading-relaxed">
+                  <li>
+                    Developed a research framework integrating AI and IoT for real-time monitoring, predictive maintenance, and anomaly detection in renewable energy microgrids.
+                  </li>
+                  <li>
+                    Recognized with the Best Paper Award at AISES 2026.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <figure
+              className="relative min-h-[210px] overflow-hidden rounded-xl border"
+              style={{ borderColor: "rgba(255,255,255,0.14)" }}
+            >
+              <img
+                src={bestPaperGroupPhoto}
+                alt="Research team at CHRIST University after receiving the AISES 2026 Best Paper Award"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+                loading="lazy"
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to top, rgba(10,24,35,0.78), transparent 58%)" }}
+              />
+              <figcaption className="absolute bottom-3 left-4 text-xs font-semibold text-white drop-shadow-lg">
+                AISES 2026 · CHRIST University
+              </figcaption>
+            </figure>
+          </div>
+        </motion.div>
+
         {/* Hackathon participations */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {participations.map((p, i) => (
@@ -166,25 +237,23 @@ export function Achievements() {
           transition={{ duration: 0.7 }}
           className="relative rounded-2xl overflow-hidden mb-5"
           style={{
-            background: "rgba(139,92,246,0.05)",
-            border: "1px solid rgba(139,92,246,0.35)",
-            boxShadow: "0 0 40px rgba(139,92,246,0.2), 0 4px 20px rgba(0,0,0,0.3)",
+            background: "rgba(96,112,145,0.045)",
+            border: "1px solid rgba(125,143,176,0.2)",
+            boxShadow: "0 8px 28px rgba(0,0,0,0.22)",
             backdropFilter: "blur(20px)",
           }}
         >
-          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-violet-500 via-indigo-400 to-blue-500" />
-          <div className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(circle at 0% 50%, rgba(139,92,246,0.08) 0%, transparent 60%)" }} />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-slate-500/50 via-blue-300/50 to-slate-500/50" />
           <div className="p-8 relative">
             <div className="flex flex-wrap items-start gap-4 mb-4">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0"
-                style={{ background: "linear-gradient(135deg, #7c3aed, #4f46e5)", boxShadow: "0 0 20px rgba(139,92,246,0.4)" }}>
+                style={{ background: "linear-gradient(135deg, #526a8e, #64748b)" }}>
                 <FileText className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap gap-2 mb-2">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black"
-                    style={{ background: "rgba(139,92,246,0.15)", border: "1px solid rgba(139,92,246,0.4)", color: "#c4b5fd" }}>
+                    style={{ background: "rgba(96,112,145,0.12)", border: "1px solid rgba(125,143,176,0.25)", color: "#cbd5e1" }}>
                     Research Paper In Progress
                   </span>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black"
@@ -198,7 +267,7 @@ export function Achievements() {
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Designing an AI-assisted claim processing workflow using{" "}
-              <span className="text-violet-300 font-semibold">OCR and LLM pipelines</span>{" "}
+              <span className="text-slate-200 font-semibold">OCR and LLM pipelines</span>{" "}
               to automate and accelerate insurance claim handling. Research manuscript and patent filing are both currently in progress.
             </p>
           </div>

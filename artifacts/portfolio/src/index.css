@@ -54,50 +54,50 @@
 }
 
 :root {
-  --background: 238 40% 2%;
+  --background: 217 25% 10%;
   --foreground: 0 0% 97%;
-  --border: 240 15% 12%;
-  --input: 240 15% 12%;
-  --ring: 258 100% 68%;
-  --card: 238 30% 5%;
+  --border: 217 18% 23%;
+  --input: 217 18% 23%;
+  --ring: 260 26% 58%;
+  --card: 219 25% 12%;
   --card-foreground: 0 0% 97%;
-  --primary: 258 100% 68%;
+  --primary: 190 48% 49%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 238 25% 8%;
+  --secondary: 218 22% 15%;
   --secondary-foreground: 0 0% 97%;
-  --muted: 238 25% 8%;
-  --muted-foreground: 240 8% 58%;
-  --accent: 258 100% 68%;
+  --muted: 218 22% 15%;
+  --muted-foreground: 220 10% 70%;
+  --accent: 190 48% 49%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --popover: 238 30% 5%;
+  --popover: 219 25% 12%;
   --popover-foreground: 0 0% 97%;
-  --popover-border: 240 15% 12%;
+  --popover-border: 217 18% 23%;
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: 238 40% 2%;
+  --background: 217 25% 10%;
   --foreground: 0 0% 97%;
-  --border: 240 15% 12%;
-  --input: 240 15% 12%;
-  --ring: 258 100% 68%;
-  --card: 238 30% 5%;
+  --border: 217 18% 23%;
+  --input: 217 18% 23%;
+  --ring: 260 26% 58%;
+  --card: 219 25% 12%;
   --card-foreground: 0 0% 97%;
-  --primary: 258 100% 68%;
+  --primary: 190 48% 49%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 238 25% 8%;
+  --secondary: 218 22% 15%;
   --secondary-foreground: 0 0% 97%;
-  --muted: 238 25% 8%;
-  --muted-foreground: 240 8% 58%;
-  --accent: 258 100% 68%;
+  --muted: 218 22% 15%;
+  --muted-foreground: 220 10% 70%;
+  --accent: 190 48% 49%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --popover: 238 30% 5%;
+  --popover: 219 25% 12%;
   --popover-foreground: 0 0% 97%;
-  --popover-border: 240 15% 12%;
+  --popover-border: 217 18% 23%;
 }
 
 @layer base {
@@ -153,12 +153,11 @@ html {
 
 /* Shimmer text */
 .shimmer-text {
-  background: linear-gradient(90deg, #a78bfa, #f472b6, #67e8f9, #a78bfa);
-  background-size: 300% 100%;
+  background: linear-gradient(90deg, #f2f1ed, #d9d6e3, #e5e8eb);
+  background-size: 100% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradient-shift 4s ease infinite;
 }
 
 /* Noise overlay on cards */

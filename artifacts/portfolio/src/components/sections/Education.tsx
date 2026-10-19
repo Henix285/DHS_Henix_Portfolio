@@ -6,12 +6,12 @@ const education = [
     icon: GraduationCap,
     degree: "B.Tech — Computer Science and Engineering",
     institution: "SRM Institute of Science and Technology",
-    period: "2024 – 2028",
-    score: "9.71",
+    period: "2024 – 2028 · Through Semester 4",
+    score: "9.73",
     unit: "CGPA",
-    gradient: "from-violet-500 to-fuchsia-500",
-    glow: "rgba(139,92,246,0.25)",
-    borderColor: "rgba(139,92,246,0.4)",
+    gradient: "from-slate-300 to-slate-500",
+    glow: "rgba(148,163,184,0.12)",
+    borderColor: "rgba(148,163,184,0.22)",
     featured: true,
   },
   {
@@ -79,7 +79,7 @@ export function Education() {
               whileHover={{ x: 4, transition: { duration: 0.2 } }}
               className="group relative rounded-2xl overflow-hidden"
               style={{
-                background: edu.featured ? "rgba(139,92,246,0.05)" : "rgba(255,255,255,0.02)",
+                background: edu.featured ? "rgba(255,255,255,0.035)" : "rgba(255,255,255,0.02)",
                 border: `1px solid ${edu.borderColor}`,
                 boxShadow: `0 0 ${edu.featured ? "40px" : "20px"} ${edu.glow}, 0 4px 20px rgba(0,0,0,0.3)`,
                 backdropFilter: "blur(20px)",

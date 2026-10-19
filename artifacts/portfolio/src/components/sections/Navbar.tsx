@@ -33,15 +33,19 @@ export function Navbar() {
         background: "rgba(8,8,20,0.8)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(139,92,246,0.15)",
-        boxShadow: "0 4px 30px rgba(0,0,0,0.4), 0 0 60px rgba(139,92,246,0.05)",
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
+        boxShadow: "0 4px 30px rgba(0,0,0,0.3)",
       } : {}}
     >
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        <a href="#hero" className="font-bold text-xl tracking-tight">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400">
-            Henix
-          </span>
+        <a href="#hero" className="inline-flex items-center gap-2.5 font-bold text-xl tracking-tight">
+          <img
+            src="/favicon.png"
+            alt=""
+            aria-hidden="true"
+            className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-white/15 shadow-[0_2px_14px_rgba(245,158,11,0.16)]"
+          />
+          <span className="text-foreground/90">Henix</span>
         </a>
 
         <div className="hidden lg:flex items-center gap-6">
@@ -53,15 +57,15 @@ export function Navbar() {
               data-testid={`nav-link-${link.label.toLowerCase().replace(/\s/g, "-")}`}
             >
               {link.label}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-violet-400 to-cyan-400 group-hover:w-full transition-all duration-300" />
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-cyan-300/70 group-hover:w-full transition-all duration-300" />
             </a>
           ))}
           <Button
             size="sm"
             className="ml-2 rounded-full gap-1.5 font-bold border-0 text-white"
             style={{
-              background: "linear-gradient(135deg, #7c3aed, #2563eb)",
-              boxShadow: "0 0 20px rgba(124,58,237,0.35)",
+              background: "linear-gradient(135deg, #28766d, #356b82)",
+              boxShadow: "0 4px 14px rgba(32,105,99,0.18)",
             }}
             asChild
           >
@@ -90,7 +94,7 @@ export function Navbar() {
             style={{
               background: "rgba(8,8,20,0.95)",
               backdropFilter: "blur(20px)",
-              borderBottom: "1px solid rgba(139,92,246,0.2)",
+              borderBottom: "1px solid rgba(255,255,255,0.1)",
             }}
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-3">
@@ -107,10 +111,10 @@ export function Navbar() {
               <a
                 href="/resume.pdf"
                 download="Hari_Supriya_Daraboina_Resume.pdf"
-                className="flex items-center gap-2 text-sm font-bold py-2 text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400"
+                className="flex items-center gap-2 text-sm font-bold py-2 text-slate-300"
                 onClick={() => setMenuOpen(false)}
               >
-                <Download className="w-4 h-4 text-violet-400" />
+                <Download className="w-4 h-4 text-slate-300" />
                 Download Resume
               </a>
             </div>

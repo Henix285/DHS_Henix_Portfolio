@@ -14,10 +14,10 @@ const experiences = [
       "Built Loan Approval Predictor using ML concepts and financial data modeling",
       "Created functional prototypes with hands-on exposure to model development",
     ],
-    gradient: "from-violet-500 to-fuchsia-500",
-    glow: "rgba(139,92,246,0.2)",
-    borderColor: "rgba(139,92,246,0.3)",
-    dotColor: "bg-violet-400",
+    gradient: "from-slate-400 to-slate-500",
+    glow: "rgba(148,163,184,0.1)",
+    borderColor: "rgba(148,163,184,0.2)",
+    dotColor: "bg-slate-300",
     tag: "NLP & ML",
   },
   {
@@ -57,7 +57,7 @@ export function Experience() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">
+          <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-slate-300 to-cyan-300">
             Experience
           </span>
           <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
