@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Trophy, Shield, MessageSquare, TrendingUp, Network } from "lucide-react";
+import { Trophy, Shield, MessageSquare, TrendingUp, Network, UsersRound } from "lucide-react";
 
 interface Project {
   title: string;
@@ -8,6 +8,7 @@ interface Project {
   tech: string[];
   context: string;
   video?: string;
+  poster?: string;
   icon: React.ComponentType<{ className?: string }>;
   gradient: string;
   glow: string;
@@ -34,6 +35,20 @@ const projects: Project[] = [
     techClass: "bg-amber-500/15 text-amber-300 border border-amber-500/25",
     badge: "1st Prize Winner",
     badgeIcon: Trophy,
+  },
+  {
+    title: "Intellects Workspace",
+    tagline: "Club operations and attendance management",
+    description: "Intellects Workspace is a web-based platform designed to streamline club operations at Intellects Club, SRM Ramapuram. It enables members to mark attendance through a simple interface while providing administrators with tools to manage attendance records and oversee club activities efficiently.",
+    tech: ["Web Platform", "Attendance Tracking", "Club Admin Tools"],
+    context: "Intellects Club · SRM Ramapuram",
+    video: "/api/storage/public-objects/henix/intellects-workspace.mp4",
+    poster: "/api/storage/public-objects/henix/intellects-workspace-poster.jpg",
+    icon: UsersRound,
+    gradient: "from-teal-500 to-emerald-400",
+    glow: "rgba(23,157,143,0.2)",
+    borderColor: "rgba(39,172,157,0.42)",
+    techClass: "bg-teal-500/10 text-teal-800 border border-teal-700/20 dark:text-teal-300 dark:border-teal-400/20",
   },
   {
     title: "InfraScan",
@@ -109,9 +124,9 @@ export function Projects() {
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
               className="group relative rounded-2xl overflow-hidden"
               style={{
-                background: "rgba(255,255,255,0.02)",
+                background: "var(--glass-bg)",
                 border: `1px solid ${project.borderColor}`,
-                boxShadow: `0 0 40px ${project.glow}, 0 8px 30px rgba(0,0,0,0.4)`,
+                boxShadow: `0 0 40px ${project.glow}, 0 8px 30px var(--panel-shadow)`,
                 backdropFilter: "blur(20px)",
               }}
               data-testid={`card-project-${project.title.toLowerCase().replace(/\s/g, "-")}`}
@@ -122,14 +137,16 @@ export function Projects() {
                 style={{ background: `radial-gradient(circle at 50% -10%, ${project.glow} 0%, transparent 60%)` }} />
 
               {/* Video */}
-              <div className="relative aspect-video overflow-hidden" style={{ background: "rgba(0,0,0,0.4)" }}>
+              <div className="relative aspect-video overflow-hidden" style={{ background: "var(--video-bg)" }}>
                 {project.video && !project.noVideo ? (
                   <video
                     controls
                     muted
                     loop
                     playsInline
-                    className={`w-full h-full ${project.title === "ClusterNodes" ? "object-contain bg-black" : "object-cover"}`}
+                    preload="metadata"
+                    poster={project.poster}
+                    className={`w-full h-full ${project.title === "ClusterNodes" || project.title === "Intellects Workspace" ? "object-contain bg-black" : "object-cover"}`}
                     data-testid={`video-${project.title.toLowerCase().replace(/\s/g, "-")}`}
                   >
                     <source src={project.video} type="video/mp4" />
@@ -177,7 +194,7 @@ export function Projects() {
                   ))}
                 </div>
 
-                <p className="text-xs text-muted-foreground/60 pt-3" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                <p className="text-xs text-muted-foreground/70 pt-3" style={{ borderTop: "1px solid var(--glass-border)" }}>
                   {project.context}
                 </p>
               </div>

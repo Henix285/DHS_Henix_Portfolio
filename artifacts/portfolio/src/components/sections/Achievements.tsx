@@ -121,19 +121,20 @@ export function Achievements() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.65, delay: 0.08 }}
+          whileHover={{ y: -5, transition: { duration: 0.2 } }}
           className="relative rounded-2xl overflow-hidden mb-8"
           style={{
-            background: "rgba(255,255,255,0.025)",
-            border: "1px solid rgba(207,174,112,0.28)",
-            boxShadow: "0 8px 28px rgba(0,0,0,0.22)",
+            background: "linear-gradient(135deg, rgba(18,116,112,0.16), var(--glass-bg) 58%)",
+            border: "1px solid rgba(54,180,169,0.58)",
+            boxShadow: "0 0 38px rgba(22,173,162,0.16), 0 8px 28px var(--panel-shadow)",
           }}
         >
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-amber-700/50 via-amber-300/70 to-amber-700/50" />
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500/80 via-teal-300 to-blue-500/80" />
           <div className="relative grid md:grid-cols-[1.15fr_0.85fr] gap-6 p-6 md:p-8 items-stretch">
             <div className="flex items-start gap-4 min-w-0">
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "rgba(185,143,70,0.16)", color: "#e4c98e" }}
+                style={{ background: "rgba(20,153,145,0.18)", color: "#68d6ce" }}
               >
                 <Award className="w-6 h-6" />
               </div>
@@ -141,9 +142,9 @@ export function Achievements() {
                 <span
                   className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold mb-3"
                   style={{
-                    background: "rgba(185,143,70,0.12)",
-                    border: "1px solid rgba(207,174,112,0.25)",
-                    color: "#e4c98e",
+                    background: "rgba(15,129,128,0.18)",
+                    border: "1px solid rgba(51,190,180,0.48)",
+                    color: "#7ce2d7",
                   }}
                 >
                   Best Paper Award · AISES 2026
@@ -165,21 +166,17 @@ export function Achievements() {
               </div>
             </div>
             <figure
-              className="relative min-h-[210px] overflow-hidden rounded-xl border"
-              style={{ borderColor: "rgba(255,255,255,0.14)" }}
+              className="relative self-center overflow-hidden rounded-xl border bg-slate-950/80"
+              style={{ borderColor: "var(--glass-border)" }}
             >
               <img
                 src={bestPaperGroupPhoto}
                 alt="Research team at CHRIST University after receiving the AISES 2026 Best Paper Award"
-                className="absolute inset-0 h-full w-full object-cover object-center"
+                className="block aspect-[2/1] h-auto w-full object-contain object-center"
                 loading="lazy"
               />
-              <div
-                className="absolute inset-0"
-                style={{ background: "linear-gradient(to top, rgba(10,24,35,0.78), transparent 58%)" }}
-              />
-              <figcaption className="absolute bottom-3 left-4 text-xs font-semibold text-white drop-shadow-lg">
-                AISES 2026 · CHRIST University
+              <figcaption className="px-3 py-2 text-xs font-semibold text-muted-foreground">
+                AISES 2026 · CHRIST University, Bangalore
               </figcaption>
             </figure>
           </div>

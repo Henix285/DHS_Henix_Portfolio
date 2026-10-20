@@ -22,23 +22,24 @@ function Home() {
       {/* Fixed aurora layer — persists across entire page */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Deep background */}
-        <div className="absolute inset-0" style={{ background: "hsl(217, 25%, 10%)" }} />
+        <div className="absolute inset-0" style={{ background: "var(--page-base)" }} />
         {/* Aurora blobs */}
         <div className="aurora-1 absolute top-[-20%] left-[-15%] w-[70vw] h-[70vw] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(139,116,169,0.09) 0%, rgba(139,116,169,0.03) 40%, transparent 70%)" }} />
+          style={{ background: "var(--aurora-one)" }} />
         <div className="aurora-2 absolute top-[20%] right-[-20%] w-[60vw] h-[60vw] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(6,182,212,0.21) 0%, rgba(6,182,212,0.05) 40%, transparent 70%)" }} />
+          style={{ background: "var(--aurora-two)" }} />
         <div className="aurora-3 absolute bottom-[10%] left-[-10%] w-[55vw] h-[55vw] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(245,158,11,0.10) 0%, rgba(245,158,11,0.03) 40%, transparent 70%)" }} />
+          style={{ background: "var(--aurora-three)" }} />
         <div className="aurora-4 absolute bottom-[-15%] right-[0%] w-[65vw] h-[65vw] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(59,130,246,0.16) 0%, rgba(59,130,246,0.045) 40%, transparent 70%)" }} />
+          style={{ background: "var(--aurora-four)" }} />
         <div className="aurora-5 absolute top-[50%] left-[30%] w-[45vw] h-[45vw] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%)" }} />
+          style={{ background: "var(--aurora-five)" }} />
         {/* Fine grid overlay */}
-        <div className="absolute inset-0 opacity-[0.04]"
+        <div className="absolute inset-0"
           style={{
-            backgroundImage: "linear-gradient(rgba(190,198,210,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(190,198,210,0.7) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)",
             backgroundSize: "80px 80px",
+            opacity: "var(--grid-opacity)",
           }} />
       </div>
 
