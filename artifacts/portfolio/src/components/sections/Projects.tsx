@@ -27,7 +27,7 @@ const projects: Project[] = [
     description: "Built a graph-based distributed systems analysis prototype using BFS, DFS and Dijkstra's algorithm. Visualized node interactions for infrastructure monitoring and anomaly insights.",
     tech: ["Python", "Graph Algorithms", "BFS/DFS", "Dijkstra", "Visualization"],
     context: "Winner — Hack2Future 2.0, IIIT Dharwad",
-    video: "/videos/clusternodes.mp4",
+    video: `${import.meta.env.BASE_URL}videos/clusternodes.mp4`,
     icon: Network,
     gradient: "from-amber-500 to-orange-400",
     glow: "rgba(245,158,11,0.25)",
@@ -42,8 +42,7 @@ const projects: Project[] = [
     description: "Intellects Workspace is a web-based platform designed to streamline club operations at Intellects Club, SRM Ramapuram. It enables members to mark attendance through a simple interface while providing administrators with tools to manage attendance records and oversee club activities efficiently.",
     tech: ["Web Platform", "Attendance Tracking", "Club Admin Tools"],
     context: "Intellects Club · SRM Ramapuram",
-    video: "/api/storage/public-objects/henix/intellects-workspace.mp4",
-    poster: "/api/storage/public-objects/henix/intellects-workspace-poster.jpg",
+    video: `${import.meta.env.BASE_URL}videos/intellects-workspace.mp4`,
     icon: UsersRound,
     gradient: "from-teal-500 to-emerald-400",
     glow: "rgba(23,157,143,0.2)",
@@ -56,7 +55,7 @@ const projects: Project[] = [
     description: "Developed a phishing detection system using behavioral and metadata-based signals. Enabled risk scoring and anomaly-based threat identification for real-time security.",
     tech: ["Python", "Machine Learning", "Security", "Anomaly Detection"],
     context: "Developed at Prismatic 2K26",
-    video: "/videos/infrascan.mp4",
+    video: `${import.meta.env.BASE_URL}videos/infrascan.mp4`,
     icon: Shield,
     gradient: "from-cyan-500 to-blue-500",
     glow: "rgba(6,182,212,0.22)",
@@ -69,7 +68,7 @@ const projects: Project[] = [
     description: "NLP-based text flow assistant built during ShadowFox Internship. Leverages natural language processing for smart text analysis and assistance.",
     tech: ["Python", "NLP", "Machine Learning", "Flask"],
     context: "ShadowFox Internship — December 2025",
-    video: "/videos/textflow.mp4",
+    video: `${import.meta.env.BASE_URL}videos/textflow.mp4`,
     icon: MessageSquare,
     gradient: "from-blue-500 to-indigo-500",
     glow: "rgba(82,105,150,0.14)",
@@ -82,7 +81,7 @@ const projects: Project[] = [
     description: "Machine learning predictor for loan approval using financial data and feature engineering. Built functional prototype with model evaluation and real-world data patterns.",
     tech: ["Python", "Scikit-learn", "Pandas", "ML Modeling"],
     context: "ShadowFox Internship — December 2025",
-    video: "/videos/loanapproval.mp4",
+    video: `${import.meta.env.BASE_URL}videos/loanapproval.mp4`,
     icon: TrendingUp,
     gradient: "from-emerald-500 to-teal-500",
     glow: "rgba(16,185,129,0.22)",
@@ -122,7 +121,8 @@ export function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group relative rounded-2xl overflow-hidden"
+              whileTap={{ scale: 0.99 }}
+              className="touch-feedback group relative rounded-2xl overflow-hidden"
               style={{
                 background: "var(--glass-bg)",
                 border: `1px solid ${project.borderColor}`,

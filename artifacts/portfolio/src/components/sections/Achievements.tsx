@@ -85,7 +85,7 @@ export function Achievements() {
                 </div>
                 <div>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black mb-2"
-                    style={{ background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.4)", color: "#fcd34d" }}>
+                    style={{ background: "rgba(245,158,11,0.15)", border: "1px solid rgba(245,158,11,0.4)", color: "var(--award-accent)" }}>
                     First Prize — National Hackathon
                   </span>
                   <h3 className="text-2xl font-black">Hack2Future 2.0 Winner</h3>
@@ -134,7 +134,7 @@ export function Achievements() {
             <div className="flex items-start gap-4 min-w-0">
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: "rgba(20,153,145,0.18)", color: "#68d6ce" }}
+                style={{ background: "rgba(20,153,145,0.18)", color: "var(--award-color)" }}
               >
                 <Award className="w-6 h-6" />
               </div>
@@ -144,7 +144,7 @@ export function Achievements() {
                   style={{
                     background: "rgba(15,129,128,0.18)",
                     border: "1px solid rgba(51,190,180,0.48)",
-                    color: "#7ce2d7",
+                    color: "var(--award-color)",
                   }}
                 >
                   Best Paper Award · AISES 2026
@@ -194,7 +194,7 @@ export function Achievements() {
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
               className="group relative rounded-2xl overflow-hidden"
               style={{
-                background: "rgba(255,255,255,0.02)",
+                background: "var(--glass-bg)",
                 border: `1px solid ${p.borderColor}`,
                 boxShadow: `0 0 30px ${p.glow}, 0 4px 20px rgba(0,0,0,0.3)`,
                 backdropFilter: "blur(20px)",
@@ -250,11 +250,11 @@ export function Achievements() {
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap gap-2 mb-2">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black"
-                    style={{ background: "rgba(96,112,145,0.12)", border: "1px solid rgba(125,143,176,0.25)", color: "#cbd5e1" }}>
+                    style={{ background: "rgba(96,112,145,0.12)", border: "1px solid rgba(125,143,176,0.25)", color: "hsl(var(--muted-foreground))" }}>
                     Research Paper In Progress
                   </span>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black"
-                    style={{ background: "rgba(79,70,229,0.15)", border: "1px solid rgba(79,70,229,0.4)", color: "#a5b4fc" }}>
+                    style={{ background: "rgba(79,70,229,0.15)", border: "1px solid rgba(79,70,229,0.4)", color: "var(--status-indigo)" }}>
                     Patent In Progress
                   </span>
                 </div>
@@ -264,7 +264,7 @@ export function Achievements() {
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Designing an AI-assisted claim processing workflow using{" "}
-              <span className="text-slate-200 font-semibold">OCR and LLM pipelines</span>{" "}
+              <span className="font-semibold text-teal-800 dark:text-slate-200">OCR and LLM pipelines</span>{" "}
               to automate and accelerate insurance claim handling. Research manuscript and patent filing are both currently in progress.
             </p>
           </div>
@@ -278,7 +278,7 @@ export function Achievements() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative rounded-2xl overflow-hidden mb-10"
           style={{
-            background: "rgba(244,63,94,0.04)",
+            background: "var(--glass-bg)",
             border: "1px solid rgba(244,63,94,0.3)",
             boxShadow: "0 0 25px rgba(244,63,94,0.15), 0 4px 20px rgba(0,0,0,0.3)",
             backdropFilter: "blur(20px)",
@@ -292,7 +292,7 @@ export function Achievements() {
             </div>
             <div>
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black mb-1"
-                style={{ background: "rgba(244,63,94,0.12)", border: "1px solid rgba(244,63,94,0.3)", color: "#fda4af" }}>
+                style={{ background: "rgba(244,63,94,0.12)", border: "1px solid rgba(244,63,94,0.3)", color: "var(--status-rose)" }}>
                 Patent In Progress
               </span>
               <h3 className="font-black text-base">Bhojantra</h3>
@@ -322,7 +322,7 @@ export function Achievements() {
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
                 className="group relative rounded-xl overflow-hidden"
                 style={{
-                  background: "rgba(255,255,255,0.025)",
+                  background: "var(--glass-bg)",
                   border: `1px solid ${cert.glow.replace("0.2", "0.3")}`,
                   boxShadow: `0 0 20px ${cert.glow}, 0 4px 15px rgba(0,0,0,0.3)`,
                   backdropFilter: "blur(16px)",

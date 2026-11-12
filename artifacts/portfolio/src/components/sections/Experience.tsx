@@ -45,7 +45,7 @@ export function Experience() {
     <section id="experience" className="py-28 relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden>
         <span className="text-[16vw] font-black leading-none tracking-tighter uppercase"
-          style={{ color: "rgba(255,255,255,0.02)" }}>
+          style={{ color: "var(--glass-border)" }}>
           WORK
         </span>
       </div>
@@ -77,9 +77,9 @@ export function Experience() {
               whileHover={{ x: 4, transition: { duration: 0.2 } }}
               className="group relative rounded-2xl overflow-hidden"
               style={{
-                background: "rgba(255,255,255,0.025)",
+                background: "var(--glass-bg)",
                 border: `1px solid ${exp.borderColor}`,
-                boxShadow: `0 0 30px ${exp.glow}, 0 4px 20px rgba(0,0,0,0.3)`,
+                boxShadow: `0 0 30px ${exp.glow}, 0 4px 20px var(--panel-shadow)`,
                 backdropFilter: "blur(20px)",
               }}
             >
@@ -101,7 +101,7 @@ export function Experience() {
                           style={{ boxShadow: `0 0 12px ${exp.glow}` }}>
                           {exp.tag}
                         </span>
-                        <span className="text-xs text-muted-foreground border border-white/10 rounded-full px-2.5 py-0.5 bg-white/5">
+                        <span className="text-xs text-muted-foreground border border-border rounded-full px-2.5 py-0.5 bg-background/50">
                           {exp.type}
                         </span>
                       </div>

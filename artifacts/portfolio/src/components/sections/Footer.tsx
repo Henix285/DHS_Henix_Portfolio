@@ -13,7 +13,7 @@ export function Footer() {
       <div className="container mx-auto px-4 max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10">
         <div className="flex items-center gap-3">
           <img
-            src="/favicon.png"
+            src={`${import.meta.env.BASE_URL}favicon.png`}
             alt=""
             aria-hidden="true"
             className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-white/15"

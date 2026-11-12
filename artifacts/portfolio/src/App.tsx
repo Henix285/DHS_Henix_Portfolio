@@ -1,7 +1,11 @@
+import { useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { IntroLoader } from "@/components/sections/IntroLoader";
 import NotFound from "@/pages/not-found";
 import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
@@ -15,6 +19,53 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 
 const queryClient = new QueryClient();
+
+function ScrollExperience() {
+  const { scrollY, scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
+  const reduceMotion = useReducedMotion();
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (value) => {
+    setShowBackToTop(value > 480);
+  });
+
+  return (
+    <>
+      <motion.div
+        aria-hidden="true"
+        className="fixed inset-x-0 top-0 z-[90] h-[3px] origin-left"
+        style={{
+          scaleX: progress,
+          background: "linear-gradient(90deg, #24b7a4, #42a5d5, #f1a04e)",
+        }}
+      />
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            type="button"
+            aria-label="Back to top"
+            initial={{ opacity: 0, y: 16, scale: 0.82 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 12, scale: 0.86 }}
+            transition={{ duration: reduceMotion ? 0.12 : 0.24 }}
+            whileHover={reduceMotion ? undefined : { y: -4, scale: 1.05 }}
+            whileTap={{ scale: 0.94 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" })}
+            className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] right-3 z-50 flex h-12 w-12 items-center justify-center rounded-full border text-foreground shadow-xl backdrop-blur-xl transition-colors hover:text-teal-500 sm:bottom-7 sm:right-7"
+            style={{
+              background: "var(--glass-bg)",
+              borderColor: "var(--glass-border)",
+              boxShadow: "0 12px 30px var(--panel-shadow)",
+            }}
+          >
+            <ArrowUp className="h-5 w-5" />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
 
 function Home() {
   return (
@@ -69,12 +120,23 @@ function Router() {
 }
 
 function App() {
+  const [entered, setEntered] = useState(false);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
+        <AnimatePresence mode="wait">
+          {entered ? (
+            <div key="portfolio">
+              <ScrollExperience />
+              <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+                <Router />
+              </WouterRouter>
+            </div>
+          ) : (
+            <IntroLoader key="intro" onComplete={() => setEntered(true)} />
+          )}
+        </AnimatePresence>
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

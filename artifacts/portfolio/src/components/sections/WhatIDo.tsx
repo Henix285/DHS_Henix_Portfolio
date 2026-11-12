@@ -1,38 +1,22 @@
 import { motion } from "framer-motion";
-import { Brain, Code2, Cpu } from "lucide-react";
+import { Brain, Cpu, ShieldCheck } from "lucide-react";
 
 const services = [
   {
     icon: Brain,
-    title: "AI / Machine Learning",
-    badge: "Strongest Differentiator",
-    gradient: "from-slate-500 via-indigo-500 to-blue-500",
-    glow: "rgba(115,126,158,0.14)",
-    borderColor: "rgba(132,142,172,0.22)",
+    title: "AI/ML + Full Stack Development",
+    badge: "One mission · Build intelligent products",
+    gradient: "from-indigo-500 via-blue-500 to-cyan-500",
+    glow: "rgba(59,130,246,0.2)",
+    borderColor: "rgba(59,130,246,0.32)",
     items: [
-      "NLP & Natural Language Processing",
-      "Recommendation Systems",
-      "Data-driven predictive models",
-      "Research & Patent-level innovation",
+      "Machine learning & NLP",
+      "Web apps & REST APIs",
+      "Data-driven recommendations",
+      "From prototype to deployment",
     ],
-    itemColors: ["bg-indigo-500/10 text-indigo-200 border-indigo-400/20", "bg-blue-500/10 text-blue-200 border-blue-400/20", "bg-slate-500/10 text-slate-200 border-slate-400/20", "bg-indigo-500/10 text-indigo-200 border-indigo-400/20"],
-    description: "Building intelligent systems that understand and learn from data — from NLP pipelines to custom ML models deployed in real-world applications.",
-  },
-  {
-    icon: Code2,
-    title: "Full Stack Development",
-    badge: "Real Products",
-    gradient: "from-cyan-500 via-blue-500 to-indigo-500",
-    glow: "rgba(6,182,212,0.25)",
-    borderColor: "rgba(6,182,212,0.4)",
-    items: [
-      "Backend systems (Node.js, Flask)",
-      "REST APIs & Firebase",
-      "Web application architecture",
-      "Scalable multi-service platforms",
-    ],
-    itemColors: ["bg-cyan-500/20 text-cyan-300 border-cyan-500/30", "bg-blue-500/20 text-blue-300 border-blue-500/30", "bg-indigo-500/20 text-indigo-300 border-indigo-500/30", "bg-cyan-500/20 text-cyan-300 border-cyan-500/30"],
-    description: "Translating ideas into production-ready software — full backend ownership from schema to deployment, with clean API design and robust integrations.",
+    itemColors: ["bg-indigo-500/10 text-indigo-800 dark:text-indigo-200 border-indigo-400/25", "bg-blue-500/10 text-blue-800 dark:text-blue-200 border-blue-400/25", "bg-cyan-500/10 text-cyan-800 dark:text-cyan-200 border-cyan-400/25", "bg-slate-500/10 text-slate-800 dark:text-slate-200 border-slate-400/25"],
+    description: "Connecting machine learning with full-stack engineering to turn ideas into useful, data-driven products—from NLP and recommendation systems to polished web apps and APIs.",
   },
   {
     icon: Cpu,
@@ -47,8 +31,24 @@ const services = [
       "Infrastructure monitoring",
       "Phishing & anomaly detection",
     ],
-    itemColors: ["bg-emerald-500/20 text-emerald-300 border-emerald-500/30", "bg-teal-500/20 text-teal-300 border-teal-500/30", "bg-green-500/20 text-green-300 border-green-500/30", "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"],
+    itemColors: ["bg-emerald-500/10 text-emerald-800 dark:text-emerald-200 border-emerald-500/25", "bg-teal-500/10 text-teal-800 dark:text-teal-200 border-teal-500/25", "bg-green-500/10 text-green-800 dark:text-green-200 border-green-500/25", "bg-emerald-500/10 text-emerald-800 dark:text-emerald-200 border-emerald-500/25"],
     description: "Applying deep algorithmic reasoning to design efficient, scalable systems — from competitive DSA to distributed infrastructure analysis.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Exploring Emerging Technologies",
+    badge: "Curiosity into prototypes",
+    gradient: "from-rose-500 via-fuchsia-500 to-violet-500",
+    glow: "rgba(217,70,239,0.18)",
+    borderColor: "rgba(217,70,239,0.3)",
+    items: [
+      "Cybersecurity",
+      "Blockchain",
+      "DevOps & cloud",
+      "New tools and platforms",
+    ],
+    itemColors: ["bg-rose-500/10 text-rose-800 dark:text-rose-200 border-rose-500/25", "bg-fuchsia-500/10 text-fuchsia-800 dark:text-fuchsia-200 border-fuchsia-500/25", "bg-violet-500/10 text-violet-800 dark:text-violet-200 border-violet-500/25", "bg-slate-500/10 text-slate-800 dark:text-slate-200 border-slate-400/25"],
+    description: "Exploring ideas across cybersecurity, blockchain, DevOps, and the technologies shaping what's next—learning by experimenting and building small, practical prototypes.",
   },
 ];
 
@@ -68,8 +68,8 @@ export function WhatIDo() {
           <span className="text-xs font-bold tracking-[0.3em] uppercase mb-3 block text-transparent bg-clip-text bg-gradient-to-r from-slate-300 to-cyan-300">
             What I Do
           </span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight leading-none">
-            Three domains.
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight leading-none">
+            Three missions.
             <br />
             <span className="shimmer-text">One mission.</span>
           </h2>
@@ -84,11 +84,12 @@ export function WhatIDo() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: i * 0.15 }}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="group relative rounded-2xl overflow-hidden cursor-default"
+              whileTap={{ scale: 0.985 }}
+              className="touch-feedback group relative rounded-2xl overflow-hidden cursor-default"
               style={{
-                background: "rgba(255,255,255,0.025)",
+                background: "var(--glass-bg)",
                 border: `1px solid ${service.borderColor}`,
-                boxShadow: `0 0 40px ${service.glow}, 0 4px 20px rgba(0,0,0,0.3)`,
+                boxShadow: `0 0 40px ${service.glow}, 0 4px 20px var(--panel-shadow)`,
                 backdropFilter: "blur(20px)",
               }}
             >
@@ -108,7 +109,7 @@ export function WhatIDo() {
 
                 {/* Badge */}
                 <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold border mb-4 bg-gradient-to-r ${service.gradient} bg-opacity-10`}
-                  style={{ background: `linear-gradient(135deg, ${service.glow}, transparent)`, borderColor: service.borderColor, color: "white" }}>
+                  style={{ background: `linear-gradient(135deg, ${service.glow}, transparent)`, borderColor: service.borderColor, color: "var(--foreground)" }}>
                   {service.badge}
                 </span>
 

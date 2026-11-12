@@ -47,7 +47,7 @@ export function Education() {
         style={{ background: "radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)", filter: "blur(60px)" }} />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden>
         <span className="text-[12vw] font-black leading-none tracking-tighter uppercase"
-          style={{ color: "rgba(255,255,255,0.02)" }}>
+          style={{ color: "var(--glass-border)" }}>
           EDUCATION
         </span>
       </div>
@@ -79,9 +79,9 @@ export function Education() {
               whileHover={{ x: 4, transition: { duration: 0.2 } }}
               className="group relative rounded-2xl overflow-hidden"
               style={{
-                background: edu.featured ? "rgba(255,255,255,0.035)" : "rgba(255,255,255,0.02)",
+                background: "var(--glass-bg)",
                 border: `1px solid ${edu.borderColor}`,
-                boxShadow: `0 0 ${edu.featured ? "40px" : "20px"} ${edu.glow}, 0 4px 20px rgba(0,0,0,0.3)`,
+                boxShadow: `0 0 ${edu.featured ? "40px" : "20px"} ${edu.glow}, 0 4px 20px var(--panel-shadow)`,
                 backdropFilter: "blur(20px)",
               }}
             >

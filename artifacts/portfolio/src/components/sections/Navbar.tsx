@@ -72,7 +72,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <a href="#hero" className="inline-flex items-center gap-2.5 font-bold text-xl tracking-tight">
           <img
-            src="/favicon.png"
+            src={`${import.meta.env.BASE_URL}favicon.png`}
             alt=""
             aria-hidden="true"
             className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-white/15 shadow-[0_2px_14px_rgba(245,158,11,0.16)]"
@@ -102,7 +102,7 @@ export function Navbar() {
             }}
             asChild
           >
-            <a href="/resume.pdf" download="Hari_Supriya_Daraboina_Resume.pdf">
+            <a href={`${import.meta.env.BASE_URL}resume.pdf`} download="Hari_Supriya_Daraboina_Resume.pdf">
               <Download className="w-3.5 h-3.5" />
               Resume
             </a>
@@ -148,7 +148,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="/resume.pdf"
+                href={`${import.meta.env.BASE_URL}resume.pdf`}
                 download="Hari_Supriya_Daraboina_Resume.pdf"
                 className="flex items-center gap-2 text-sm font-bold py-2 text-foreground"
                 onClick={() => setMenuOpen(false)}

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SiPython, SiNodedotjs, SiFlask, SiFirebase, SiGit, SiGithub, SiCplusplus } from "react-icons/si";
-import { Code2, Brain, Cpu, Database, Wrench } from "lucide-react";
+import { Code2, Brain, Cpu, Database, ShieldCheck, Wrench } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -87,6 +87,20 @@ const skillCategories: SkillCategory[] = [
       { name: "GitHub", icon: SiGithub },
     ],
   },
+  {
+    label: "Emerging Technologies",
+    icon: ShieldCheck,
+    gradient: "from-rose-500 to-violet-500",
+    glow: "rgba(217,70,239,0.18)",
+    borderColor: "rgba(217,70,239,0.3)",
+    tagClass: "bg-rose-500/10 text-rose-800 dark:text-rose-200 border border-rose-500/25 hover:bg-rose-500/15",
+    skills: [
+      { name: "Cybersecurity" },
+      { name: "Blockchain" },
+      { name: "DevOps" },
+      { name: "Cloud Computing" },
+    ],
+  },
 ];
 
 export function Skills() {
@@ -129,9 +143,9 @@ export function Skills() {
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
               className="group relative rounded-2xl overflow-hidden"
               style={{
-                background: "rgba(255,255,255,0.025)",
+                background: "var(--glass-bg)",
                 border: `1px solid ${cat.borderColor}`,
-                boxShadow: `0 0 30px ${cat.glow}, 0 4px 20px rgba(0,0,0,0.3)`,
+                boxShadow: `0 0 30px ${cat.glow}, 0 4px 20px var(--panel-shadow)`,
                 backdropFilter: "blur(20px)",
               }}
             >
